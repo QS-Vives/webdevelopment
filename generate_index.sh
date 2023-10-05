@@ -85,7 +85,6 @@ is_folder_filtered() {
 
 
 # Initialize the root folder of the repository and create an index.html if it doesn't exist
-cd ../..
 root_folder="$(git rev-parse --show-toplevel)"
 if [ ! -e "$root_folder/index.html" ]; then
     touch "$root_folder/index.html"
