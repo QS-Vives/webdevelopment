@@ -13,7 +13,7 @@ process_folder_make_list() {
     for html_files in *.html; do
         # Skip adding index.html to the list
         if [ "$file" != "index.html" ]; then
-            printf "        <li>\n            <a href=\"%s\">%s</a>\n        </li>\n" "$file" "${file%.html}" >> "$folder/.tempindex.temphtmllist"
+            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$file" "${file%.html}" >> "$folder/.tempindex.temphtmllist"
         fi
     done
 
@@ -28,7 +28,7 @@ process_folder_make_list() {
 #     done
 
     if [ -e index.html ]; then
-        printf "        <li>\n            <a href=\"%s\">%s</a>\n        </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
+        printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
     fi
 }
 
