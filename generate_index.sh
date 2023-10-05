@@ -40,7 +40,7 @@ process_folder_make_index() {
 
     cd "$folder"
 
-    if [ -e index.html ] && grep -q " data-was_automatically_generated=true>" index.html; then
+    if [ -e index.html ] && [ -e .tempindex.temphtmllist ] && grep -q " data-was_automatically_generated=true>" index.html; then
         rm .tempindex.temphtmllist
     fi
 
@@ -71,14 +71,17 @@ process_folder_make_index() {
 
 
 is_folder_filtered() {
-    # Define an array of substrings
-    substrings="$2"
-
     # Target string to search within
-    target_string="$1"
+    local target_string="$1"
+    shift            # Shift all arguments to the left (original $1 gets lost)
+    local substrings=("$@") # Rebuild the array with rest of arguments
 
-    # Join the array elements with a pipe (|) to create a regex pattern
-    pattern=$(IFS="|"; echo "${substrings[*]}")
+    # Join the array elements with a pipe (*|*) to create a regex pattern
+    pattern="$(printf "%s*|*" "${substrings[@]}")"
+    pattern="${pattern%\*\|\*}"
+
+    echo $pattern
+    echo $substrings
 
     # Use the `case` statement for pattern matching
     case "$target_string" in
@@ -114,8 +117,11 @@ wait
 # Iterate through all subfolders recursively again to generate all index.html pages
 find "$root_folder" -type d | while read -r folder; do
     if is_folder_filtered "$folder/" "${filtered_dirs[@]}"; then
+        echo "filtered1 $folder/"
         continue
     fi
+
+    echo "process $folder/"
     process_folder_make_index "$folder" &
 done
 
