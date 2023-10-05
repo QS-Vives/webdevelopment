@@ -1,7 +1,14 @@
 #!/bin/sh
 
-# Function that makes an unordered list
+####### Script which automatically generates all index.html files needed to access all HTML files in the project.
+# This script is executed pre-commit so I no longer manually need to update files in order for new
+# assignments to be able to be navigated to.
+
+# Function that makes an unordered list of <li>s containing <a>s to all HTML files in folder.
+# Additionally, if there is at least one HTML file in the folder, we add the same <li> in the parent folder
+# so that we can get to this folder via there.
 process_folder_make_list() {
+    # Read arguments
     folder="$1"
     parent_folder="$2"
     foldername=$(basename "$folder")
@@ -9,41 +16,39 @@ process_folder_make_list() {
 
     cd "$folder"
 
-    # Loop through sorted HTML files in the directory and generate links
+    # Loop through HTML files in the directory and generate <li>s.
     for html_file in *.html; do
         # Skip adding index.html to the list
-        if [ "$html_file" != "index.html" ]; then
-            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$file" "${file%.html}" >> "$folder/.tempindex.temphtmllist"
+        # Check for exsistence of the file is done for the case where there are no HTML files in the folder
+        # and the for loop returns "*.html" which we do not want to add (because it does not exist).
+        if [ "$html_file" != "index.html" ] && [ -e "$html_file" ]; then
+            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$html_file" "${html_file%.html}" >> "$folder/.tempindex.temphtmllist"
         fi
     done
 
-    #filtered_dirs=("/images/")
-
-#     for dir in "$folder"/*/
-#     do
-#         if is_folder_filtered "$dir" "$filtered_dirs";
-#             then
-#             printf "        <li>\n            <a href=\"%s\">%s</a>\n        </li>\n" "$dir_name" "$dir_name" >> .tempindex.temphtmllist
-#         fi
-#     done
-
+    # Add reference to parent folder if there are HTML files in this folder.
     if [ -e "$folder/.tempindex.temphtmllist" ]; then
         printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
     fi
 }
 
 
+# Function which generates the actual index.html files.
 process_folder_make_index() {
+    # Read arguments
     folder="$1"
     foldername=$(basename "$folder")
     foldername=${foldername:-/} # To correct for the case where PWD=/
 
     cd "$folder"
 
-    if [ -e index.html ] && [ -e .tempindex.temphtmllist ] && grep -q " data-was_automatically_generated=true>" index.html; then
+    # If the index.html does not contain our custom string, it means it was made manually and thus we should
+    # probably not touch it. We remove the tempfile to do this.
+    if [ -e index.html ] && [ -e .tempindex.temphtmllist ] && ! grep -q " data-was_automatically_generated=true>" index.html; then
         rm .tempindex.temphtmllist
     fi
 
+    # If there is no tempfile, do not make (changes to) index.html file.
     if ! [ -e .tempindex.temphtmllist ]; then
         return 0
     fi
@@ -59,37 +64,34 @@ process_folder_make_index() {
     <h2>Bestanden in $foldername:</h2>
     <ul>" > index.html
 
+    # Sort our list of <li>s in a natural order.
     sort -V .tempindex.temphtmllist -o .tempindex.temphtmllist
 
+    # Add them to the index.html file.
     printf "%s\n" "$(cat .tempindex.temphtmllist)" >> index.html
 
+    # Remove the no longer needer temp file.
     rm .tempindex.temphtmllist
 
+    # Finish writing the index.html file.
     printf "    </ul>\n</body>\n</html>" >> index.html
+}
 
-    }
 
-
+# Function which determines if a path to a folder should be filtered based on an array of folders.
 is_folder_filtered() {
-    # Target string to search within
+    # Read arguments
+    # Target string to search within, i.e. our full path.
     local target_string="$1"
     shift            # Shift all arguments to the left (original $1 gets lost)
     local substrings=("$@") # Rebuild the array with rest of arguments
 
-    # Join the array elements with a pipe (*|*) to create a regex pattern
-    pattern="$(printf "%s*|*" "${substrings[@]}")"
-    pattern="${pattern%\*\|\*}"
+    # Join the array elements with a pipe (|) to create a regex pattern
+    pattern="$(IFS="|"; echo "${substrings[*]}")"
 
-    echo $pattern
-    echo $substrings
-
-    # Use the `case` statement for pattern matching
-    case "$target_string" in
-        *$pattern*)
-            # filtered
-            return 0
-        ;;
-    esac
+    if echo "$target_string" | grep -Eq "$pattern"; then
+        return 0 # filtered
+    fi
     # not filtered
     return 1
 }
@@ -101,12 +103,13 @@ if [ ! -e "$root_folder/index.html" ]; then
     touch "$root_folder/index.html"
 fi
 
+# List of (sub)folders we should not check.
 filtered_dirs=("/.git/" "/images/")
 
-# Iterate through all subfolders recursively to generate list of links
+# Iterate through all subfolders recursively to generate list of links.
 find "$root_folder" -type d | while read -r folder; do
     if is_folder_filtered "$folder/" "${filtered_dirs[@]}"; then
-        continue
+        continue # Skip filtered folder.
     fi
     parent_folder="$(dirname "$folder")"
     process_folder_make_list "$folder" "$parent_folder" &
@@ -117,15 +120,12 @@ wait
 # Iterate through all subfolders recursively again to generate all index.html pages
 find "$root_folder" -type d | while read -r folder; do
     if is_folder_filtered "$folder/" "${filtered_dirs[@]}"; then
-        echo "filtered1 $folder/"
-        continue
+        continue # Skip filtered folder.
     fi
 
-    echo "process $folder/"
     process_folder_make_index "$folder" &
 done
 
 wait
 
 exit 0
-
