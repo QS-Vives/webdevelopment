@@ -10,9 +10,9 @@ process_folder_make_list() {
     cd "$folder"
 
     # Loop through sorted HTML files in the directory and generate links
-    for html_files in *.html; do
+    for html_file in *.html; do
         # Skip adding index.html to the list
-        if [ "$file" != "index.html" ]; then
+        if [ "$html_file" != "index.html" ]; then
             printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$file" "${file%.html}" >> "$folder/.tempindex.temphtmllist"
         fi
     done
@@ -40,20 +40,24 @@ process_folder_make_index() {
 
     cd "$folder"
 
+    if [ -e index.html ] && grep -q " data-was_automatically_generated=true>" index.html; then
+        rm .tempindex.temphtmllist
+    fi
+
     if ! [ -e .tempindex.temphtmllist ]; then
         return 0
     fi
 
     # Create or overwrite the index.html file
     printf "%s\n" "<!DOCTYPE html>
-    <html lang=\"nl\">
-    <head>
-        <meta charset=\"UTF-8\">
-        <title>Index (Automatisch gegenereerd)</title>
-    </head>
-    <body>
-        <h2>Bestanden in $foldername:</h2>
-        <ul>" > index.html
+<html lang=\"nl\">
+<head data-was_automatically_generated=true>
+    <meta charset=\"UTF-8\">
+    <title>Index (Automatisch gegenereerd)</title>
+</head>
+<body>
+    <h2>Bestanden in $foldername:</h2>
+    <ul>" > index.html
 
     sort -V .tempindex.temphtmllist -o .tempindex.temphtmllist
 
