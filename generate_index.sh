@@ -29,7 +29,7 @@ process_folder_make_list() {
 
     if [ -e index.html ]; then
         printf "        <li>\n            <a href=\"%s\">%s</a>\n        </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
-
+    fi
 }
 
 
