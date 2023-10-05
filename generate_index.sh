@@ -27,7 +27,7 @@ process_folder_make_list() {
 #         fi
 #     done
 
-    if [ -e index.html ]; then
+    if [ -e "$folder/.tempindex.temphtmllist" ]; then
         printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
     fi
 }
@@ -39,6 +39,10 @@ process_folder_make_index() {
     foldername=${foldername:-/} # To correct for the case where PWD=/
 
     cd "$folder"
+
+    if ! [ -e .tempindex.temphtmllist ]; then
+        return 0
+    fi
 
     # Create or overwrite the index.html file
     printf "%s\n" "<!DOCTYPE html>
