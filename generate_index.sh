@@ -53,7 +53,7 @@ process_folder_make_index() {
 
     sort -V .tempindex.temphtmllist -o .tempindex.temphtmllist
 
-    printf "%s\n" "$(cat .tempindex.temphtmllist)" > index.html
+    printf "%s\n" "$(cat .tempindex.temphtmllist)" >> index.html
 
     rm .tempindex.temphtmllist
 
