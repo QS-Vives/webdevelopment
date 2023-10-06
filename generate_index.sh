@@ -97,6 +97,8 @@ is_folder_filtered() {
 }
 
 
+echo "Generating index.html files..."
+
 # Initialize the root folder of the repository and create an index.html if it doesn't exist
 root_folder="$(git rev-parse --show-toplevel)"
 if [ ! -e "$root_folder/index.html" ]; then
@@ -127,5 +129,7 @@ find "$root_folder" -type d | while read -r folder; do
 done
 
 wait
+
+echo "Generating index.html files. DONE."
 
 exit 0
