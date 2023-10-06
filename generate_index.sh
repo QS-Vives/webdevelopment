@@ -56,7 +56,7 @@ process_folder_make_index() {
     # Create or overwrite the index.html file
     printf "%s\n" "<!DOCTYPE html>
 <html lang=\"nl\">
-<head data-was_automatically_generated=true>
+<head data-was_automatically_generated=\"true\">
     <meta charset=\"UTF-8\">
     <title>Index (Automatisch gegenereerd)</title>
 </head>
