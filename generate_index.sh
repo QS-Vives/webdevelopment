@@ -27,7 +27,8 @@ process_folder_make_list() {
             fi
         # Seperate case for index.html files, if it was not generated, i.e. manually made, we need to add a reference in parent folder
         else if ! grep -q " data-was_automatically_generated=\"true\">" index.html; then
-            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
+                printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
+            fi
         fi
     done
 
