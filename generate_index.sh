@@ -18,11 +18,16 @@ process_folder_make_list() {
 
     # Loop through HTML files in the directory and generate <li>s.
     for html_file in *.html; do
-        # Skip adding index.html to the list
-        # Check for exsistence of the file is done for the case where there are no HTML files in the folder
+        # Handle non index files by simple checking if they exist, then adding them to the list
+        # Check for existence of the file is done for the case where there are no HTML files in the folder
         # and the for loop returns "*.html" which we do not want to add (because it does not exist).
-        if [ "$html_file" != "index.html" ] && [ -e "$html_file" ]; then
-            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$html_file" "${html_file%.html}" >> "$folder/.tempindex.temphtmllist"
+        if [ "$html_file" != "index.html" ]; then
+            if [ -e "$html_file" ]; then
+                printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$html_file" "${html_file%.html}" >> "$folder/.tempindex.temphtmllist"
+            fi
+        # Seperate case for index.html files, if it was not generated, i.e. manually made, we need to add a reference in parent folder
+        else if ! grep -q " data-was_automatically_generated=\"true\">" index.html; then
+            printf "        <li> <a href=\"%s\">%s</a> </li>\n" "$foldername" "$foldername" >> "$parent_folder/.tempindex.temphtmllist"
         fi
     done
 
