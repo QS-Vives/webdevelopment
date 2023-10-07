@@ -80,10 +80,11 @@ process_folder_make_index() {
     rm .tempindex.temphtmllist
 
     # Finish writing the index.html file.
+    # Add navigation to parent folder if not root folder
     if [ "$folder" = "$(git rev-parse --show-toplevel)" ]; then
         printf "    </ul>\n</body>\n</html>" >> index.html
     else
-        printf "    </ul>\n    <footer><a href="..">Niveau omhoog</a></footer>\n</body>\n</html>" >> index.html
+        printf "    </ul>\n    <footer><a href=\"..\">Niveau omhoog</a></footer>\n</body>\n</html>" >> index.html
     fi
 }
 
