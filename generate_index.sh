@@ -44,7 +44,7 @@ process_folder_make_index() {
 
     # If the index.html does not contain our custom string, it means it was made manually and thus we should
     # probably not touch it. We remove the tempfile to do this.
-    if [ -e index.html ] && [ -e .tempindex.temphtmllist ] && ! grep -q " data-was_automatically_generated=true>" index.html; then
+    if [ -e index.html ] && [ -e .tempindex.temphtmllist ] && ! grep -q " data-was_automatically_generated=\"true\">" index.html; then
         rm .tempindex.temphtmllist
     fi
 
