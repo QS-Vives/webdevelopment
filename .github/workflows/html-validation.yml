@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install Dependencies
-      #run: npm install # You can customize this if you have specific dependencies
+    # - name: Install Dependencies
+    #  run: npm install # You can customize this if you have specific dependencies
 
     - name: Validate HTML
       run: |
