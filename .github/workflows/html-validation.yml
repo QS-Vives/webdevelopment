@@ -11,36 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Install required packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y default-jre
-          if [[ -z "${{ steps.cache.outputs.cache-hit }}" ]]; then
-            wget https://validator.github.io/validator/validator-20.8.0.jar -O /.github/workflows/cache/validator-20.8.0.jar
+    - name: Install Dependencies
+      run: npm install # You can customize this if you have specific dependencies
+
+    - name: Validate HTML
+      run: |
+        for file in $(find . -type f -name "*.html"); do
+          curl -H "Content-Type: text/html; charset=utf-8" --data-binary @"$file" https://validator.w3.org/nu/?out=gnu 2>&1 | tee validator_output.txt
+          if grep -q "is valid" validator_output.txt; then
+            echo "$file is valid."
+          else
+            echo "$file is not valid."
+            cat validator_output.txt
+            exit 1
           fi
-        shell: bash
-
-      - name: Setup cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            /.github/workflows/cache/validator-20.8.0.jar
-          key: ${{ runner.os }}-validator-20.8.0
-        id: cache
-
-      - name: Validate HTML
-        run: |
-          java -Xss256k -cp /.github/workflows/cache/validator-20.8.0.jar nu.validator.servlet.Main \
-          https://your-website.com
-        continue-on-error: true
-        shell: bash
-
-      - name: Upload validation results
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: validation-results
-          path: ./results/
+        done
