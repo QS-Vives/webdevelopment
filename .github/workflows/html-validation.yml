@@ -14,14 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            /.github/workflows/cache/validator-20.8.0.jar
-          key: ${{ runner.os }}-validator-20.8.0
-        id: cache
-
       - name: Install required packages
         run: |
           sudo apt-get update
@@ -30,6 +22,14 @@ jobs:
             wget https://validator.github.io/validator/validator-20.8.0.jar -O /.github/workflows/cache/validator-20.8.0.jar
           fi
         shell: bash
+
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            /.github/workflows/cache/validator-20.8.0.jar
+          key: ${{ runner.os }}-validator-20.8.0
+        id: cache
 
       - name: Validate HTML
         run: |
