@@ -19,7 +19,7 @@ jobs:
 
     - name: Validate HTML
       run: |
-        for file in $(find . -type f -name "*.html"); do
+        for file in $(find $GITHUB_WORKSPACE -type f -name "*.html"); do
           curl -H "Content-Type: text/html; charset=utf-8" --data-binary @"$file" https://validator.w3.org/nu/?out=gnu 2>&1 | tee validator_output.txt
           if grep -q "is valid" validator_output.txt; then
             echo "$file is valid."
