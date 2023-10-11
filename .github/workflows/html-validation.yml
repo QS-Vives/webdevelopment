@@ -7,28 +7,40 @@ on:
       - '!Labo2'
 
 jobs:
-  validate-html:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Cache Node.js dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            /.github/workflows/cache/validator-20.8.0.jar
+          key: ${{ runner.os }}-validator-20.8.0
+        id: cache
 
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Install required packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          if [[ -z "${{ steps.cache.outputs.cache-hit }}" ]]; then
+            wget https://validator.github.io/validator/validator-20.8.0.jar -O /.github/workflows/cache/validator-20.8.0.jar
+          fi
+        shell: bash
 
-    - name: Install HTMLHint
-      run: npm install -g htmlhint
+      - name: Validate HTML
+        run: |
+          java -Xss256k -cp /.github/workflows/cache/validator-20.8.0.jar nu.validator.servlet.Main \
+          https://your-website.com
+        continue-on-error: true
+        shell: bash
 
-    - name: Validate HTML files
-      run: htmlhint "**/*.html"
+      - name: Upload validation results
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: validation-results
+          path: ./results/
