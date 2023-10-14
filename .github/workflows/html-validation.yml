@@ -11,22 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    # - name: Install Dependencies
-    #  run: npm install # You can customize this if you have specific dependencies
-
-    - name: Validate HTML
-      run: |
-        for file in $(find $GITHUB_WORKSPACE -type f -name "*.html"); do
-          curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary @"$file" https://validator.w3.org/nu/?out=gnu 2>&1 | tee validator_output.txt
-          if grep -q "is valid" validator_output.txt; then
-            echo "$file is valid."
-          else
-            echo "$file is not valid."
-            cat validator_output.txt
-            cat "$file"
-            exit 1
-          fi
-        done
+    - name: HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+            
