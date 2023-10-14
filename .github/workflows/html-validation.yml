@@ -7,10 +7,12 @@ on:
       - '!Labo2'
 
 jobs:
-  validate:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: HTML5 Validator
-      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
-            
+    - uses: actions/checkout@v4
+    - name: Checks HTML5
+      uses: Cyb3r-Jak3/html5validator-action@<latest version>
+      with:
+        root: /
+        
