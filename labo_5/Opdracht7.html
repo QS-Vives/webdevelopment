@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <title>Opdracht 7</title>
     <style>
-        h1 {
-            font-size: 2ex;
+        /*Normaal gebruiken we een aparte stylesheet maar hier was het de moeite niet waard.*/
+        code, var {
+            background: #f0f0f0;
+            border: 1px solid #c8c8c8;
+            padding: 0 3px;
         }
-        h2 {
-            font-size: 2em;
+        p {
+            line-height: 150%;
         }
     </style>
 </head>
 <body>
     <main>
-        <h1>
-            Opdracht 7
-        </h1>
         <h2>
             Opdracht 7
         </h2>
         <p>
-            De h2 zal groter zijn omdat
+            De <code>h2</code> zal groter zijn omdat bij de eenheid <code>em</code> er gekeken wordt naar de grootte van het lettertype van het ouder-element.
+            Als er geen ouder is, wordt er gekeken naar de grootte van het standaard lettertype van de browser wat meestal <var>16px</var> is.
+            Dus de <code>h2</code> zal <var>32px</var> hoog zijn. Bij eenheid <code>ex</code> wordt er gekeken naar de grootte van de letter <code>x</code> van het eerst beschikbare lettertype.
+            In dit geval zal dat dus Times New Roman zijn. Die heeft een aspect ratio van <var>~= 0,459</var>.
+            Opnieuw is de <code>h1</code> niet genest dus zal de grootte van het lettertype <var>0,459 * 16px * 2 ~= 14,688px</var>.
+            Nu is het duidelijk dat <var>32px</var> groter is dan <var>14,688px</var> en dus is de <code>h2</code> het grootst.
         </p>
     </main>
 </body>
