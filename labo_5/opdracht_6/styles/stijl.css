@@ -1,0 +1,32 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+p {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2em;
+}
+
+.red_text {
+    color: hsl(0, 100%, 33%);
+}
+
+.green_text {
+    color: hsl(120, 100%, 33%);
+}
+
+.blue_text {
+    color: hsl(240, 100%, 33%);
+}
