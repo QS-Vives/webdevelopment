@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+}
+
+main, footer {
+    margin: 8px;
+}
+
+header {
+    background-color: #cccccc;
+    padding: 8px;
+    border-bottom: 2px solid #555555;
+}
+
+.top_fixed {
+    position: sticky; 
+    float: left;
+    width: 100vmax;
+    top: 0px;
+    margin-bottom: 12px;
+}
+
+.header_margin {
+    height: 16px;
+}
+
+#header_title {
+    border-bottom: 1px solid #dbdbdb;
+    margin: 0;
+    padding: 0 0 12px 0;
+}
+
+#header_nav {
+    padding: 8px 0 0 0;
+}
+
