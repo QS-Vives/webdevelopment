@@ -42,11 +42,12 @@ process_folder_make_list() {
 
     if [ -e "$folder/.tempindex.temphtmllist" ]; then
         generate=1
-        if [ -e "$parent_folder/.tempindex.temphtmllist" ] &&
-            grep -q "        <li> <a href=\"$foldername\">$foldername</a> </li>" "$parent_folder/.tempindex.temphtmllist";
-        then
-            generate=0
-        fi
+        #TODO FIXME fix bad logic
+#         if [ -e "$parent_folder/.tempindex.temphtmllist" ] &&
+#             grep -q "        <li> <a href=\"$foldername\">$foldername</a> </li>" "$parent_folder/.tempindex.temphtmllist";
+#         then
+#             generate=0
+#         fi
     fi
 
     if [ $generate -eq 1 ] ; then
