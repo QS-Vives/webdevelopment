@@ -139,7 +139,7 @@ function build_html {
 }
 
 # List of (sub)folders we should not check.
-filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/")
+filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/ /.idea/")
 
 # Initialize the associative array to store directory names.
 declare -A directory_dict
