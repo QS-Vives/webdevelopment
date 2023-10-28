@@ -16,3 +16,4 @@ jobs:
       with:
         root: ./
         css: true
+        blacklist: automatic_index_generating
