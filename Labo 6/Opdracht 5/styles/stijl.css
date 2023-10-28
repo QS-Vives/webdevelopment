@@ -1,0 +1,36 @@
+a {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Chain_link_icon_slanted.png/241px-Chain_link_icon_slanted.png");
+    background-size: 1em;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 1.1em;
+}
+
+/* alternatieve oplossing
+a {
+    border-style: none none none solid;
+    border-width: 1em;
+    border-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Chain_link_icon_slanted.png/241px-Chain_link_icon_slanted.png") 0 0 0 241 space space;
+} */
+
+/* Font variëren van grootte ter demonstratie*/
+
+.size12 {
+    font-size: 12px;
+}
+
+.size16 {
+    font-size: 16px;
+}
+
+.size20 {
+    font-size: 20px;
+}
+
+.size24 {
+    font-size: 24px;
+}
+
+.size28 {
+    font-size: 28px;
+}

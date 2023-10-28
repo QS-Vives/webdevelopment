@@ -1,0 +1,168 @@
+:root {
+    --primary-background-color: #232020;
+    --primary-color: #f0eaea;
+    --secondary-background-color: #484646;
+    /*--secondary-color: ;*/
+    --secondary-border-color: #393838;
+    --secondary-subtle-color: #b6b3b3;
+    --link-color: #88aaff;
+    --link-color-visited: #bc9bff;
+    --link-color-hover: #99aaff;
+    --link-color-visited-hover: #cd9bff;
+    --link-color-active: #ffaaaa;
+    --link-color-active-hover: #ffaaaa;
+
+    font-size: 1.2em;
+    color: var(--primary-color);
+    background-color: var(--primary-background-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    margin: 0 8px 4px;
+    overflow: auto;
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--link-color-visited);
+}
+
+a:hover {
+    text-decoration-style: double;
+    color: var(--link-color-hover);
+}
+
+a:visited:hover {
+    color: var(--link-color-visited-hover);
+}
+
+a:active {
+    color: var(--link-color-active);
+}
+
+a:hover:active{
+    color: var(--link-color-active-hover);
+}
+
+#page_wrapper {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    z-index: 1000;
+    float: left;
+    white-space: nowrap;
+    top: 0;
+    position: sticky;
+    background-color: var(--secondary-background-color);
+    border-bottom: 4px solid var(--secondary-border-color);
+    width: calc(100% - 32px);
+    padding: 0 16px;
+}
+
+footer {
+    background-color: var(--secondary-background-color);
+    border-top: 4px solid var(--secondary-border-color);
+    width: calc(100% - 24px);
+    height: 28px;
+    vertical-align: middle;
+    padding: 8px 12px 12px 12px;
+    white-space: nowrap;
+}
+
+span.subtle_text {
+    font-size: 0.8em;
+    color: var(--secondary-subtle-color);
+    font-style: italic;
+}
+
+ul.file_list li.file::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.1em;
+    margin-bottom: 0.1em;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f7/Tabler-icons_file-description.svg");
+    filter: invert(1) brightness(84%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+ul.file_list li.folder::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.1em;
+    margin-bottom: 0.1em;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f4/Tabler-icons_folder.svg");
+    filter: invert(1) brightness(84%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+a.back::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.25em;
+    margin-bottom: 0.1em;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/12/Tabler-icons_arrow-back-up.svg");
+    filter: invert(1) brightness(84%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+a.home::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.25em;
+    margin-bottom: 0.1em;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d8/Tabler-icons_home.svg");
+    filter: invert(1) brightness(84%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+ul.file_list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 20px;
+}
+
+.inline {
+    display: inline;
+}
+

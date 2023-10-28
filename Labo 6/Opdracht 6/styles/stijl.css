@@ -1,0 +1,24 @@
+ul.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+ul.checklist li {
+    margin: 1em 0;
+    position: relative;
+    padding-left: 1.4em; /* Create space for the icon */
+}
+
+ul.checklist li::before {
+    content: "";
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a2/BlueCheckBoxUnChecked.gif");
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    left: 0;
+    background-size: contain;
+}
+
+ul.checklist li.checked::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/48/BlueCheckBoxCheckedRed.gif");
+}
