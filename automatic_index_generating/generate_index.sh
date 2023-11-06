@@ -53,7 +53,7 @@ get_directory_name() {
 # Function which build a dictionary of the directories with the key being the depth of the directories.
 # So the root directory is at depth 0, the subdirectories of said directory are at depth 1,
 # subdirectories of those at depth 2 and so on.
-function build_directory_dict {
+build_directory_dict() {
     local dir="$1"
     local depth="$2"
     local subdirs=()
@@ -77,7 +77,7 @@ function build_directory_dict {
 
 
 # Function which loops over the directories at the deepest level first and runs a function there.
-function loop_over_directories_with_function () {
+loop_over_directories_with_function() {
     local function_name="$1"
 
     for ((i = deepest_level; i >= 0; i--)); do
@@ -92,7 +92,7 @@ function loop_over_directories_with_function () {
 
 # Function which builds just the html unordered list containing references to all html files in the directory,
 # and a reference in the parent directory if applicable.
-function build_list {
+build_list() {
     local dir="$1"
     local depth="$2"
     local output=""
@@ -126,7 +126,7 @@ function build_list {
 
 
 # Function which constructs the index.html files in every folder.
-function build_html {
+build_html() {
     local dir="$1"
     local depth="$2"
 
@@ -205,9 +205,8 @@ for key in "${!directory_dict[@]}"; do
     fi
 done
 
-loop_over_directories_with_function "build_list" true
-loop_over_directories_with_function "build_html" false true
+loop_over_directories_with_function "build_list"
+loop_over_directories_with_function "build_html"
 
 echo "$(date --rfc-3339=ns): [DONE] Generating index files."
-
 
