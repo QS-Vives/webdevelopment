@@ -1,0 +1,57 @@
+body {
+    font-family: "Times New Roman", serif;
+}
+
+table.calendar {
+    border-spacing: 0;
+    border: 3px black solid;
+}
+
+table.calendar .table_caption {
+    background-color: rgb(170, 170, 200);
+    color: black;
+}
+
+table.calendar .table_caption th {
+    border: none;
+}
+
+table.calendar thead {
+    background-color: rgb(35,37,70);
+    color: rgb(200,190,240);
+}
+
+table.calendar thead th {
+    padding: 2px;
+    border-left: 1px #0E78DF dotted;
+    border-top: 1px #0E78DF dotted;
+}
+
+table.calendar thead th:first-child {
+    border-left: none;
+}
+
+table.calendar td {
+    padding: 2px;
+    border-left: 1px black dotted;
+    border-top: 1px black dotted;
+
+}
+
+table.calendar td:first-child {
+    border-left: none;
+}
+
+table.calendar tr td.outside_month {
+    background-color: #C2C2C2;
+    color: #A1A1A1;
+    border-color: #A1A1A1;
+}
+
+table.calendar td:first-child, table.calendar td:last-child {
+    background-color: rgb(255, 220, 220);
+}
+
+table.calendar tr td.free_day {
+    background-color: rgb(250,120,120);
+}
