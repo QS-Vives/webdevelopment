@@ -1,0 +1,68 @@
+table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 3px solid #006699;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
+
+table td, table th {
+    padding: 4px 10px;
+}
+
+table thead th {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));
+    background: -moz-linear-gradient(center top, #006699 5%, #00557F 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    border-left: 3px solid #0070A8;
+}
+
+table thead th:first-child {
+    border: none;
+}
+
+table tbody td {
+    color: #00496B;
+    border-left: 3px solid #E1EEF4;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+table tbody .alt td {
+    background: #E1EEF4;
+    color: #00496B;
+}
+
+table tbody td:first-child {
+    border-left: none;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tfoot {
+    border-top: 4px solid #006699;
+    background: #E1EEF4;
+    font-size: 14px;
+    color: #00496B;
+}
+
+table tfoot td {
+    padding: 4px 10px;
+}
+
+.onbekend {background-color:red;}
+
+code {
+    background-color: #EEEEEE;
+}

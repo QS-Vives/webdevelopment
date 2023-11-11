@@ -40,14 +40,14 @@
             <td>Bob</td>
             <td>De Bouwer</td>
             <td>Bobsville</td>
-            <td>123456</td>
+            <td class="onbekend">Onbekend</td>
             <td>7.5</td>
         </tr>
         <tr class="alt">
             <td>4</td>
             <td>Steve</td>
             <td>Stevenson</td>
-            <td>Stockholm</td>
+            <td class="onbekend">Onbekend</td>
             <td>103 16</td>
             <td>9</td>
         </tr>
@@ -73,13 +73,11 @@
         </tr>
         </tfoot>
     </table>
-    <br>
     <ul>
         <li>
-            Nee, bijvoorbeeld de prefix <code>-moz-</code> is niet nodig omdat mijn browser gebaseerd is op chromium en dus de prefix <code>-webkit-</code> gebruikt.
-        </li>
-        <li>
-            Nee, bijvoorbeeld de <code>linear-gradient</code> property is ondersteund door alle grote browser en heeft niet langer een prefix nodig.
+            De css regel <code>.onbekend {background-color:red;}</code> heeft geen effect op <code>&lt;td&gt;</code> cel in een <code>&lt;tr&gt;</code> rij met <code>class="alt"</code>,
+            maar wel in een <code>&lt;tr&gt;</code> rij zonder deze <code>'alt'</code> class omdat de <code>background-color</code> die bepaald wordt in de selector
+            <code>table tbody .alt td</code> van rijen met <code>class="alt"</code> specifieker is dan de selector <code>.onbekend</code> dus het kleur wordt overschreven door die van de alt.
         </li>
     </ul>
 </body>
