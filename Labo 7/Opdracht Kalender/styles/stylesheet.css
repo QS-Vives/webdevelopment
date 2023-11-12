@@ -8,24 +8,27 @@ table.calendar {
 }
 
 table.calendar .table_caption {
-    background-color: rgb(170,170,200);
+    background-color: rgb(170, 170, 200);
     color: black;
-    & th {
-        border: none;
-    }
+}
+
+table.calendar .table_caption th {
+    border: none;
 }
 
 table.calendar thead {
     background-color: rgb(35,37,70);
     color: rgb(200,190,240);
-    & th {
-        padding: 2px;
-        border-left: 1px #0E78DF dotted;
-        border-top: 1px #0E78DF dotted;
-    }
-    & th:first-child {
-        border-left: none;
-    }
+}
+
+table.calendar thead th {
+    padding: 2px;
+    border-left: 1px #0E78DF dotted;
+    border-top: 1px #0E78DF dotted;
+}
+
+table.calendar thead th:first-child {
+    border-left: none;
 }
 
 table.calendar td {
