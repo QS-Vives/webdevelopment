@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Persoonlijke homepage</title>
+
+    <link rel="stylesheet" href="styles/stylesheet.css">
 </head>
 <body>
-    <header id="top">
+    <header>
         <h1>Quinten Steeland's persoonlijke homepage</h1>
+        <nav>
+            <a href="#contact%20info">
+                Contactinformatie</a> -
+            <a href="#hobbies">
+                Hobbies</a> -
+            <a href="#likes">
+                Likes</a>
+        </nav>
     </header>
+    <div id="top"></div>
+    <div id="contact info" class="section_spacer"></div>
     <main>
         <section>
             <h3>Persoonlijke contactinformatie</h3>
@@ -27,12 +39,14 @@
                 <li>
                     <h4>Foto:</h4>
                     <figure>
-                        <img alt="Foto van een liggende kat die met zijn poot zijn oor wast." src="images/cat.jpg"/>
+                        <img id="img_cat" class="img_size_90_percent" alt="Foto van een liggende kat die met zijn poot zijn oor wast." src="images/cat.jpg"/>
                         <figcaption>Ik stuur mijn kat voor de foto (letterlijk).</figcaption>
                     </figure>
                 </li>
             </ul>
         </section>
+        <div id="hobbies" class="section_link"></div>
+        <hr class="centered_line">
         <section>
             <h3>Hobbies</h3>
             <ul>
@@ -53,6 +67,8 @@
                 </li>
             </ul>
         </section>
+        <div id="likes" class="section_link"></div>
+        <hr class="centered_line">
         <section>
             <h3>"Likes"</h3>
             <ul>

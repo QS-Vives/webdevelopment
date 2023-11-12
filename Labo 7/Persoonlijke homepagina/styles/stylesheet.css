@@ -1,0 +1,125 @@
+:root {
+    --primary-background-color: #232020;
+    --primary-color: #f0eaea;
+    --primary-border-color: #191212;
+    --secondary-background-color: #484646;
+    --secondary-color: #eae4e4;
+    --secondary-border-color: #393838;
+    --secondary-subtle-color: #b6b3b3;
+    --link-color: #88aaff;
+    --link-color-visited: #bc9bff;
+    --link-color-hover: #99aaff;
+    --link-color-visited-hover: #cd9bff;
+    --link-color-active: #ffaaaa;
+    --link-color-active-hover: #ffaaaa;
+
+    font-size: 1.4em;
+    color: var(--primary-color);
+    background-color: var(--primary-background-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background: var(--primary-background-color);
+    background: linear-gradient(180deg, rgba(42,38,38,1) 0%, rgba(35,32,32,1) 100%);
+    margin: 0;
+    min-width: 480px;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--link-color-visited);
+}
+
+a:hover {
+    text-decoration-style: double;
+    color: var(--link-color-hover);
+}
+
+a:visited:hover {
+    color: var(--link-color-visited-hover);
+}
+
+a:active {
+    color: var(--link-color-active);
+}
+
+a:hover:active{
+    color: var(--link-color-active-hover);
+}
+
+figcaption {
+    font-style: italic;
+}
+
+ul {
+    list-style: square;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--primary-background-color);
+    padding: 8px 16px 12px 16px;
+    border-bottom: 4px solid var(--primary-border-color);
+    text-align: center;
+    max-height: 4em;
+    overflow-y: auto;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header nav {
+    font-size: 1.2em;
+}
+
+main {
+    transform: translateY(-2em);
+    margin: 1em 1em -1em;
+    padding: 1em;
+    border: 3px solid var(--secondary-border-color);
+    color: var(--secondary-color);
+    background-color: var(--secondary-background-color);
+}
+
+footer {
+    position: page;
+    bottom: 0;
+    background-color: var(--primary-background-color);
+    padding: 8px 16px 16px 16px;
+    border-top: 4px solid var(--primary-border-color);
+    text-align: center;
+}
+
+.img_size_90_percent {
+    width: 90%;
+}
+
+.section_spacer {
+    height: 4em;
+}
+
+.section_link {
+    height: 1px;
+}
+
+.centered_line {
+    border: 1px solid var(--secondary-subtle-color);
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+#img_cat {
+    max-width: 512px;
+}
