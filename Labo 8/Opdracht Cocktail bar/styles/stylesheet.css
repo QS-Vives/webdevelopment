@@ -1,0 +1,98 @@
+body {
+    width: 95%;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2 {
+    color: #007e7e
+}
+
+h1 {
+    font-size: 150%;
+    font-family: Verdana, sans-serif;
+}
+
+h2 {
+    font-size:  130%;
+    font-family: Helvetica, sans-serif;
+}
+
+header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20vh;
+}
+
+a {
+    color: inherit;
+}
+
+footer {
+    font-size: 50%;
+    text-align: center;
+}
+
+.weekly-specials {
+    border: 3px solid #90B3B2;
+    padding: 20px 30px 10px;
+    background-image: url("../images/cocktail.gif");
+    background-size: 4em;
+    background-position: left top;
+    background-repeat: repeat-x;
+    text-align: center;
+}
+
+.weekly-specials a:hover {
+    background-color: #61411a;
+    color: white;
+}
+
+.weekly-specials h1 {
+    color: #202020
+}
+
+.weekly-specials h2 {
+    color: #8c071d;
+}
+
+.weekly-specials h3 {
+    color: #0E78DF;
+}
+
+.main-content {
+    padding-right: 20px;
+}
+
+.container-70-rest {
+    display: inline-block;
+    box-sizing: border-box;
+    --left-element-width: 70%;
+}
+
+.left-70-percent {
+    width: var(--left-element-width);
+    float: left;
+}
+
+.right-rest {
+    width: calc(100% - var(--left-element-width));
+    float: right;
+}
+
+#guarantee {
+    margin: 30px;
+    color: #444444;
+    background-color: #a7cece;
+    border: 3px dotted #EEEEEE;
+    font-style: italic;
+    background-image: url("../images/background.gif");
+    background-size: 4em;
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding: 20px 20px 20px 4em;
+    line-height: 150%;
+}
