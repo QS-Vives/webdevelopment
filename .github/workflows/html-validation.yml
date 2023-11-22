@@ -5,6 +5,8 @@ on:
     branches:
       - '*'
       - '!Labo2'
+      - '!labo_3'
+      - '!labo_8'
 
 jobs:
   build:
