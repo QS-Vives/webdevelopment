@@ -15,6 +15,6 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
         root: ./
-        log_level: INFO
+        extra: --show-warnings
         css: true
         blacklist: automatic_index_generating
