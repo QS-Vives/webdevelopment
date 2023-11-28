@@ -17,5 +17,6 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
         root: ./
-        extra: --show-warnings --blacklist "Labo 3" "Labo 7" "Labo 8" "automatic_index_generating"
+        extra: --show-warnings
         css: true
+        blacklist: Labo\ 3 Labo\ 7 Labo\ 8 automatic_index_generating
