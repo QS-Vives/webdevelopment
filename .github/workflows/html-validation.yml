@@ -19,4 +19,4 @@ jobs:
         root: ./
         extra: --show-warnings
         css: true
-        blacklist: automatic_index_generating, Labo 3, Labo 7, Labo 8
+        blacklist: automatic_index_generating Labo%203 Labo%207 Labo%208
