@@ -20,7 +20,7 @@ jobs:
         # INPUT_BLACKLIST: "Labo\ 3 Labo\ 7 Labo\ 8"
       with:
         root: ./
-        extra: "--show-warnings --blacklist Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating"
+        extra: '--show-warnings --blacklist Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating'
         # blacklist: automatic_index_generating
         # config: validation_config.yaml
         # blacklist: '"Labo 3" "Labo 7" "Labo 8" automatic_index_generating'
