@@ -27,4 +27,14 @@ jobs:
       run: |
         echo "test1"
         echo "$INPUT_BLACKLIST"
+        my_var="bob"
         echo "test2"
+
+    - name: debug2
+      if: ${{ always() }}
+      run: |
+        echo "test1"
+        echo "$INPUT_BLACKLIST"
+        echo "test2"
+        echo "$my_var"
+        echo "test3"
