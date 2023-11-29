@@ -17,10 +17,11 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       env:
         HTML5_ACTION_DEBUG: true
+        blacklisted: "Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating"
         # INPUT_BLACKLIST: "Labo\ 3 Labo\ 7 Labo\ 8"
       with:
         root: ./
-        extra: '--show-warnings --blacklist Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating'
+        extra: "--show-warnings --blacklist $(blacklisted)"
         # blacklist: automatic_index_generating
         # config: validation_config.yaml
         # blacklist: '"Labo 3" "Labo 7" "Labo 8" automatic_index_generating'
