@@ -18,8 +18,8 @@ jobs:
       with:
         root: ./
         extra: --show-warnings
-        config: validation_config.yaml
-        # blacklist: Labo\u00203 Labo\u00207 Labo\u00208 automatic_index_generating 
+        # config: validation_config.yaml
+        blacklist: Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating 
         css: true
         log_level: DEBUG
         run: |
