@@ -21,7 +21,6 @@ jobs:
         blacklist: 'Labo 3''Labo 7''Labo 8''automatic_index_generating'
         css: true
         log_level: DEBUG
-        action_debug: true
     - name: debug
       run: |
         echo "$INPUT_BLACKLIST"
