@@ -23,6 +23,7 @@ jobs:
         css: true
         log_level: DEBUG
     - name: debug
+      if: ${{ always() }}
       run: |
         echo "test1"
         echo "$INPUT_BLACKLIST"
