@@ -21,6 +21,7 @@ jobs:
       with:
         root: ./
         extra: --show-warnings
+        blacklist: ""
         # config: validation_config.yaml
         # blacklist: '"Labo 3" "Labo 7" "Labo 8" automatic_index_generating'
         css: true
