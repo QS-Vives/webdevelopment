@@ -17,10 +17,14 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
         root: ./
-        extra: --blacklist Labo 3/ Labo 7/ Labo 8/ automatic_index_generating/ --show-warnings
+        extra: --blacklist Labo 3 Labo 7 Labo 8 automatic_index_generating --show-warnings
         
         css: true
         log_level: DEBUG
+        run: |
+          echo "test3"
+          echo "$INPUT_BLACKLIST"
+          echo "test4"
     - name: debug
       if: ${{ always() }}
       run: |
