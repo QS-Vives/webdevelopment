@@ -5,6 +5,8 @@ on:
     branches:
       - '*'
       - '!Labo2'
+      - '!labo_3'
+      - '!labo_8'
 
 jobs:
   build:
@@ -13,8 +15,32 @@ jobs:
     - uses: actions/checkout@v4
     - name: HTML+CSS validation
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+      env:
+        HTML5_ACTION_DEBUG: true
       with:
         root: ./
         extra: --show-warnings
+        # config: validation_config.yaml
+        blacklist: '"Labo 3" "Labo 7" "Labo 8" automatic_index_generating'
         css: true
-        blacklist: automatic_index_generating
+        log_level: DEBUG
+        # run: |
+        #   echo "test3"
+        #   echo "$INPUT_BLACKLIST"
+        #   echo "test4"
+    - name: debug
+      if: ${{ always() }}
+      run: |
+        echo "test1"
+        echo "$INPUT_BLACKLIST"
+        my_var="bob"
+        echo "test2"
+
+    - name: debug2
+      if: ${{ always() }}
+      run: |
+        echo "test1"
+        echo "$INPUT_BLACKLIST"
+        echo "test2"
+        echo "$my_var"
+        echo "test3"
