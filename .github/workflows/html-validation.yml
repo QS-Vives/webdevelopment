@@ -16,10 +16,11 @@ jobs:
     - name: HTML+CSS validation
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
+        HTML5_ACTION_DEBUG: true
         root: ./
         extra: --show-warnings
         # config: validation_config.yaml
-        blacklist: Labo\\ 3 Labo\\ 7 Labo\\ 8 automatic_index_generating 
+        blacklist: Labo\ 3 Labo\ 7 Labo\ 8 automatic_index_generating
         css: true
         log_level: DEBUG
         run: |
