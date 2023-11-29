@@ -26,16 +26,16 @@ body {
 
 @keyframes fly {
     from {
-        transform: scale(15%);
+        scale: 15%;
         bottom: -450px;
         right: -300px;
-        rotate: 50deg;
+        transform: rotate(50deg);
     }
     to {
-        transform: scale(100%);
+        scale: 100%;
         right: 90px;
         bottom: 60px;
-        rotate: 0deg;
+        transform: rotate(0deg);
     }
 }
 
