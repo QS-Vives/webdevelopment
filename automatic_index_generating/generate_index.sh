@@ -118,8 +118,6 @@ build_list() {
         local dir_name="$(get_directory_name "$dir")"
         if [ "$(echo *.html)" == "index.html" ] && [ "$(echo *.htm)" == "*.htm" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
             printf "                    <li class=\"file\"> <a href=\"%s\">%s</a> </li>\n" "$(url_encode "$dir_name")" "$(html_encode "$dir_name")" >> "$parent_dir/.tempindex.temphtmllist"
-        elif [ "$(echo *.html)" == "*.html" ] && [ "$(echo *.htm)" == "index.htm" ]; then
-            printf "                    <li class=\"file\"> <a href=\"%s\">%s</a> </li>\n" "$(url_encode "$dir_name")" "$(html_encode "$dir_name")" >> "$parent_dir/.tempindex.temphtmllist"
         else
             printf "                    <li class=\"folder\"> <a href=\"%s\">%s</a> </li>\n" "$(url_encode "$dir_name")" "$(html_encode "$dir_name")" >> "$parent_dir/.tempindex.temphtmllist"
         fi
