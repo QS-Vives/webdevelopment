@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+.row > div {
+    height: 75px;
+    border: 6px solid white;
+    padding: 4px;
+}
+.row div:nth-child(odd) {
+    background-color: #D0D4D9;
+}
+
+.row div:nth-child(even) {
+    background-color: #A3A8AE;
+}
+
+
+
