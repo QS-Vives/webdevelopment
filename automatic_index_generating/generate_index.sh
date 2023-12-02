@@ -178,7 +178,7 @@ if ! [ -d "$start_directory" ]; then
 fi
 
 # List of (sub)folders we should not check.
-filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/")
+filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/" "/imported_pages/")
 
 # Initialize the associative array to store directory names.
 declare -A directory_dict
