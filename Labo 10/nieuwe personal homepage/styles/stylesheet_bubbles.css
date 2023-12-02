@@ -1,0 +1,63 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid #333333;
+    background-color: #cccccc;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7f7f7f;
+    border-radius: 5px;
+}
+
+
+.bubble-container input[type="checkbox"]:checked + .bubble {
+    animation: expandAndReplace 0.1s forwards;
+    animation-timing-function: linear;
+    pointer-events: none;
+}
+
+.bubble-container input[type="checkbox"]:checked {
+    pointer-events: none;
+}
+
+.bubble-container .bubble {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(158, 232, 255, 0.6) 0%, rgba(121, 206, 255, 0.6) 50%, rgba(32, 132, 189, 0.867) 90%, rgb(0, 70, 145) 100%); 
+    pointer-events: none;
+}
+
+.bubble-container input[type="checkbox"] {
+    opacity: 0; /* Hide the actual checkbox */
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+
+.bubble-container {
+    display: inline-block;
+    position: relative;
+}
+
+@keyframes expandAndReplace {
+    0% {
+        transform: scale(1);
+        background: radial-gradient(closest-side, rgba(158, 232, 255, 0.6) 0%, rgba(121, 206, 255, 0.6) 50%, rgba(32, 132, 189, 0.867) 90%, rgb(0, 70, 145) 100%);
+    }
+    99% {
+        transform: scale(1.33);
+        background: radial-gradient(closest-side, rgba(158, 232, 255, 0.6) 0%, rgba(121, 206, 255, 0.6) 50%, rgba(32, 132, 189, 0.867) 90%, rgb(0, 70, 145) 100%);
+    }
+    100% {
+        transform: scale(1);
+        background: radial-gradient(closest-side, rgba(92, 195, 255, 0.6) 0%, rgba(175, 226, 255, 0.1) 100%);
+    }
+}

@@ -100,7 +100,7 @@ build_list() {
     cd "$dir"
 
     # Files in this directory
-    for html_file in *.html; do
+    for html_file in *.html *.htm; do
         if [ -e "$html_file" ]; then
             if ! grep -q " data-was_automatically_generated=\"true\">" "$html_file"; then
                 output="$output"$'\n'"                    <li class=\"file\"> <a href=\"$(url_encode "$html_file")\">$(html_encode "${html_file%.html}")</a> </li>"
@@ -116,7 +116,7 @@ build_list() {
     if [ -e "$dir/.tempindex.temphtmllist" ] && [[ $depth -ne 0 ]]; then
         local parent_dir="$(get_parent_directory "$dir")"
         local dir_name="$(get_directory_name "$dir")"
-        if [ "$(echo *.html)" == "index.html" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
+        if [ "$(echo *.html)" == "index.html" ] && [ "$(echo *.htm)" == "*.htm" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
             printf "                    <li class=\"file\"> <a href=\"%s\">%s</a> </li>\n" "$(url_encode "$dir_name")" "$(html_encode "$dir_name")" >> "$parent_dir/.tempindex.temphtmllist"
         else
             printf "                    <li class=\"folder\"> <a href=\"%s\">%s</a> </li>\n" "$(url_encode "$dir_name")" "$(html_encode "$dir_name")" >> "$parent_dir/.tempindex.temphtmllist"
@@ -178,7 +178,7 @@ if ! [ -d "$start_directory" ]; then
 fi
 
 # List of (sub)folders we should not check.
-filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/")
+filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/" "/imported_pages/")
 
 # Initialize the associative array to store directory names.
 declare -A directory_dict
