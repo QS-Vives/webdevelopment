@@ -2,6 +2,13 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 
 // Default is dark mode
 
+// Check if the user prefers dark mode
+const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Set the checkbox state based on user preference
+darkModeToggle.checked = prefersDarkMode;
+
+
 // Check for saved user preference and apply light/dark mode if stored
 if (localStorage.getItem('color-scheme') === 'dark') {
     document.body.classList.add('dark-mode');
