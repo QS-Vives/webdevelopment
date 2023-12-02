@@ -21,4 +21,4 @@ jobs:
         root: ./
         blacklist: automatic_index_generating
         css: true
-        extra: "--show-warnings --ignore-re /\.\/Labo%203\/|\.\/Labo%207\/|\.\/Labo%208\/|\.\/Labo%209\//"
+        extra: "--show-warnings --ignore-re /\\.\\/Labo%203\\/|\\.\\/Labo%207\\/|\\.\\/Labo%208\\/|\\.\\/Labo%209\\//"
