@@ -135,10 +135,10 @@ build_html() {
     # No list, no file to generate.
     if ! [ -e ".tempindex.temphtmllist" ]; then return 0; fi
 
-    # Check for a possible conflicting index.html which could block us from reaching html files nested deeper.
+    # Check for a possible conflicting index.html which could block us from reaching html files.
     if [ -e "index.html" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
-        if grep -q "<li class=\"folder\"> <a href=" ".tempindex.temphtmllist"; then
-            printf "Warning: %s already contains an index.html file,\nhtml files below this directory may not be accessible!\n" "$dir"
+        if [[ $(wc -l ".tempindex.temphtmllist" | awk '{print $1}') -gt 1 ]]; then
+            printf "Warning: %s already contains an index.html file,\nhtml files in and below this directory may not be accessible!\n" "$dir"
         fi
         rm ".tempindex.temphtmllist"
         return 0
