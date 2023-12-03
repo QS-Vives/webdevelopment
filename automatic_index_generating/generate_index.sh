@@ -135,6 +135,14 @@ build_html() {
     # No list, no file to generate.
     if ! [ -e ".tempindex.temphtmllist" ]; then return 0; fi
 
+    # If the directory contains this file, don't generate and index
+    if [ -e ".AIG_skip_index" ]; then
+        if [ -e ".tempindex.temphtmllist" ]; then
+            rm ".tempindex.temphtmllist"
+        fi
+        return 0
+    fi
+
     # Check for a possible conflicting index.html which could block us from reaching html files.
     if [ -e "index.html" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
         if [[ $(wc -l ".tempindex.temphtmllist" | awk '{print $1}') -gt 1 ]]; then
