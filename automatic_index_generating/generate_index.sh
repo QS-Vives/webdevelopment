@@ -151,7 +151,7 @@ build_html() {
     # Sort the html unordered list based on the names of the anchors
     sorted="$(sort -V -t'>' -k2,2 -k1,1 ".tempindex.temphtmllist" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\(<\/li>\)\n\(<li\)/\1\2/g')"
 
-    output="$output"$'\n'"$sorted"$'\n'"$html_footer"
+    output="$output"$'\n'"$sorted"$'\n'"$html_footer"$'\n'
 
     if [[ $depth -eq 0 ]]; then
         output="$(sed '/<nav/{:a;N;/<\/nav/!ba;/href="\.\.".*href="\/webdevelopment\/"/d}' <<< "$output")"
@@ -164,25 +164,26 @@ build_html() {
     printf "%s" "$output" > "index.html"
 
     rm ".tempindex.temphtmllist"
-
 }
 
 
 # Function to extract the necessary parts from our template html file.
 extract_parts_from_template() {
+    local html_template="$(<"$start_directory/automatic_index_generating/template.html")"
+
     # Get the line number before <!--#file_list_start-->
-    header_end_line=$(grep -n '<!--#file_list_start-->' template.html | cut -d: -f1)
+    header_end_line=$(grep -n '<!--#file_list_start-->' <<< "$html_template" | cut -d: -f1)
     header_end_line=$((header_end_line - 1))
 
     # Extract content for html_header
-    html_header="$(sed -n "1,${header_end_line}p" template.html)"
+    html_header="$(sed -n "1,${header_end_line}p" <<< "$html_template")"
 
     # Get the line number for <!--#file_list_end-->
-    footer_start_line=$(grep -n '<!--#file_list_end-->' template.html | cut -d: -f1)
+    footer_start_line=$(grep -n '<!--#file_list_end-->' <<< "$html_template" | cut -d: -f1)
     footer_start_line=$((footer_start_line + 1))
 
     # Extract content for html_footer
-    html_footer="$(sed -n "${footer_start_line},\$p" template.html)"
+    html_footer="$(sed -n "${footer_start_line},\$p" <<< "$html_template")"
 }
 
 
