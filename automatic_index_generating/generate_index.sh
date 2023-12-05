@@ -159,6 +159,10 @@ build_html() {
     # Sort the html unordered list based on the names of the anchors
     sorted="$(sort -V -t'>' -k2,2 -k1,1 ".tempindex.temphtmllist" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\(<\/li>\)\n\(<li\)/\1\2/g')"
 
+    # Add style="--i: n" for every n-th element
+    sorted=$(echo "$sorted" | awk -v RS='</li>' -v ORS='' '/<li class="[^"]*"> <a href="[^"]*">[^<]*<\/a> / {match($0, /<li class="([^"]*)">/, arr); sub(/<li class="([^"]*)">/, "<li class=\""arr[1]"\" style=\"--i: "i++"\">", $0); print $0 "</li>"}')
+
+    # Combine the parts into the complete html
     output="$output"$'\n'"$sorted"$'\n'"$html_footer"$'\n'
 
     if [[ $depth -eq 0 ]]; then

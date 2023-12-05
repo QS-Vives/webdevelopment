@@ -19,6 +19,5 @@ jobs:
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
         root: ./
-        blacklist: automatic_index_generating
         css: true
         extra: "--show-warnings --ignore-re /\\.\\/Labo%203\\/|\\.\\/Labo%207\\/|\\.\\/Labo%208\\/|\\.\\/Labo%209\\/|\\.\\/Labo%201\\//"
