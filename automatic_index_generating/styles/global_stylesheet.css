@@ -198,7 +198,7 @@ ul.file_list li {
     pointer-events: none;
 
     opacity: 0;
-    scale: 0;
+    transform: scale(0);
     animation: fadeIn 0.250s ease-in-out forwards;
 }
 
@@ -230,11 +230,11 @@ ul.file_list li:nth-child(n) {
 
 @keyframes fadeIn {
     from {
-        scale: 0;
+        transform: scale(0);
         opacity: 0;
     }
     to {
-        scale: 100%;
+        transform: scale(1);
         opacity: 1;
     }
 }
