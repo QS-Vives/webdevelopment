@@ -103,7 +103,7 @@ build_list() {
     for html_file in *.html *.htm; do
         if [ -e "$html_file" ]; then
             if ! grep -q " data-was_automatically_generated=\"true\">" "$html_file"; then
-                output="$output"$'\n'"                    <li class=\"file\"> <a href=\"$(url_encode "$html_file")\">$(html_encode "${html_file%.html}")</a> </li>"
+                output="                    <li class=\"file\"> <a href=\"$(url_encode "$html_file")\">$(html_encode "${html_file%.html}")</a> </li>"$'\n'"$output"
             fi
         fi
     done
@@ -135,36 +135,67 @@ build_html() {
     # No list, no file to generate.
     if ! [ -e ".tempindex.temphtmllist" ]; then return 0; fi
 
-    # Check for a possible conflicting index.html which could block us from reaching html files nested deeper.
+    # If the directory contains this file, don't generate and index
+    if [ -e ".AIG_skip_index" ]; then
+        if [ -e ".tempindex.temphtmllist" ]; then
+            rm ".tempindex.temphtmllist"
+        fi
+        return 0
+    fi
+
+    # Check for a possible conflicting index.html which could block us from reaching html files.
     if [ -e "index.html" ] && ! grep -q " data-was_automatically_generated=\"true\">" "index.html"; then
-        if grep -q "<li class=\"folder\"> <a href=" ".tempindex.temphtmllist"; then
-            printf "Warning: %s already contains an index.html file,\nhtml files below this directory may not be accessible!\n" "$dir"
+        if [[ $(wc -l ".tempindex.temphtmllist" | awk '{print $1}') -gt 1 ]]; then
+            printf "Warning: %s already contains an index.html file,\nhtml files in and below this directory may not be accessible!\n" "$dir"
         fi
         rm ".tempindex.temphtmllist"
         return 0
     fi
 
-    local html_header="$html_header"
+    local output="$html_header"
     local dir_name="$(get_directory_name "$dir")"
     local sorted=""
 
-    # Replace placeholder with actual directory name
-    html_header="${html_header//###foldername###/$dir_name}"
-
-    printf "%s\n" "$html_header" > "index.html"
-
     # Sort the html unordered list based on the names of the anchors
     sorted="$(sort -V -t'>' -k2,2 -k1,1 ".tempindex.temphtmllist" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\(<\/li>\)\n\(<li\)/\1\2/g')"
-    printf "%s\n" "$sorted" >> "index.html"
+
+    # Add style="--i: n" for every n-th element
+    sorted=$(echo "$sorted" | awk -v RS='</li>' -v ORS='' '/<li class="[^"]*"> <a href="[^"]*">[^<]*<\/a> / {match($0, /<li class="([^"]*)">/, arr); sub(/<li class="([^"]*)">/, "<li class=\""arr[1]"\" style=\"--i: "i++"\">", $0); print $0 "</li>"}')
+
+    # Combine the parts into the complete html
+    output="$output"$'\n'"$sorted"$'\n'"$html_footer"$'\n'
 
     if [[ $depth -eq 0 ]]; then
-        printf "%s" "$html_footer_top_level" >> "index.html"
-    else
-        printf "%s" "$html_footer" >> "index.html"
+        output="$(sed '/<nav/{:a;N;/<\/nav/!ba;/href="\.\.".*href="\/webdevelopment\/"/d}' <<< "$output")"
     fi
 
-    rm ".tempindex.temphtmllist"
+    # Replace placeholder with actual directory name
+    output="${output//###foldername###/$dir_name}"
 
+    # Write to file
+    printf "%s" "$output" > "index.html"
+
+    rm ".tempindex.temphtmllist"
+}
+
+
+# Function to extract the necessary parts from our template html file.
+extract_parts_from_template() {
+    local html_template="$(<"$start_directory/automatic_index_generating/template.html")"
+
+    # Get the line number before <!--#file_list_start-->
+    header_end_line=$(grep -n '<!--#file_list_start-->' <<< "$html_template" | cut -d: -f1)
+    header_end_line=$((header_end_line - 1))
+
+    # Extract content for html_header
+    html_header="$(sed -n "1,${header_end_line}p" <<< "$html_template")"
+
+    # Get the line number for <!--#file_list_end-->
+    footer_start_line=$(grep -n '<!--#file_list_end-->' <<< "$html_template" | cut -d: -f1)
+    footer_start_line=$((footer_start_line + 1))
+
+    # Extract content for html_footer
+    html_footer="$(sed -n "${footer_start_line},\$p" <<< "$html_template")"
 }
 
 
@@ -177,6 +208,8 @@ if ! [ -d "$start_directory" ]; then
     exit 1
 fi
 
+echo "$(date --rfc-3339=ns): [STARTING] Generating index files..."
+
 # List of (sub)folders we should not check.
 filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/" "/imported_pages/")
 
@@ -186,14 +219,10 @@ declare -A directory_dict
 # Delimiter for splitting directory names
 delimiter="\\"
 
-echo "$(date --rfc-3339=ns): [STARTING] Generating index files..."
-
 start_directory=${start_directory%/}
 if [[ "$start_directory" == "" ]]; then start_directory="/"; fi
 
-html_header="$(cat "$start_directory/automatic_index_generating/header.partialhtml")"
-html_footer="$(cat "$start_directory/automatic_index_generating/footer.partialhtml")"
-html_footer_top_level="$(cat "$start_directory/automatic_index_generating/footer_top_level.partialhtml")"
+extract_parts_from_template
 
 build_directory_dict "$start_directory" 0
 
