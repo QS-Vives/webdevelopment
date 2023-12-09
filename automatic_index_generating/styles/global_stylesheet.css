@@ -101,7 +101,7 @@ span.subtle_text {
     font-style: italic;
 }
 
-ul.file_list li.file::before {
+ul.file_list li.file a::before {
     content: "";
     display: inline-block;
     width: 1em;
@@ -117,7 +117,7 @@ ul.file_list li.file::before {
     white-space: nowrap;
 }
 
-ul.file_list li.folder::before {
+ul.file_list li.folder a::before {
     content: "";
     display: inline-block;
     width: 1em;
@@ -181,29 +181,29 @@ ul.file_list {
     display: inline;
 }
 
-ul.file_list li:hover {
+ul.file_list li:hover a {
     background-color: var(--primary-background-color);
     box-shadow: inset 0 0 0 4px var(--secondary-border-color);
 }
 
-ul.file_list li {
+ul.file_list li a {
+    display: block;
     border: 4px solid var(--secondary-border-color);
     border-radius: 24px;
     text-align: center;
     vertical-align: middle;
-    margin: 24px;
+    margin: 12px;
     padding: 6px 16px 16px 8px;
     background-color: var(--secondary-background-color);
     font-size: 2.4em;
-    pointer-events: none;
-
-    opacity: 0;
-    transform: scale(0);
-    animation: fadeIn 0.250s ease-in-out forwards;
+    pointer-events: auto;
 }
 
-ul.file_list li a {
-    pointer-events: auto;
+ul.file_list li {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+    animation: fadeIn 0.250s ease-in-out forwards;
 }
 
 ul.file_list li:nth-child(n) {
@@ -215,14 +215,14 @@ ul.file_list li:nth-child(n) {
 		font-size: 1.6em;
 	}
 
-	ul.file_list li {
+	ul.file_list li a {
         font-size: 1.2em;
         margin: 6px;
         padding: 4px 12px 6px 8px;
         border-radius: 20px
     }
 
-    ul.file_list li:hover {
+    ul.file_list li:hover a {
         box-shadow: inset 0 0 0 2px var(--secondary-border-color);
     }
 
@@ -230,11 +230,11 @@ ul.file_list li:nth-child(n) {
 
 @keyframes fadeIn {
     from {
-        transform: scale(0);
+        transform: scale(0) rotate(-45deg);
         opacity: 0;
     }
     to {
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
         opacity: 1;
     }
 }
