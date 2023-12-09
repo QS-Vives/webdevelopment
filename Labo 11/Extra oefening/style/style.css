@@ -1,4 +1,4 @@
-section {
+main {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: auto auto;
@@ -6,7 +6,7 @@ section {
 
 /* items */
 
-section div {
+main div {
     color: white;
     /*font-size: 20px;*/
     padding: 20px;
@@ -52,7 +52,7 @@ section div {
 }
 
 @media screen and (min-width: 760px) {
-    section {
+    main {
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: auto auto auto;
     }
