@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdracht 2</title>
+
+    <link rel="stylesheet" href="styles/stijl.css">
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>Voornaam</th>
+            <th>Naam</th>
+            <th>Gemeente</th>
+            <th>Postcode</th>
+            <th>Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Smith</td>
+            <td>Londen</td>
+            <td>EC1</td>
+            <td>7</td>
+        </tr>
+        <tr class="alt">
+            <td>2</td>
+            <td>Bert</td>
+            <td>Blunder</td>
+            <td>Brussel</td>
+            <td>1000</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Bob</td>
+            <td>De Bouwer</td>
+            <td>Bobsville</td>
+            <td class="onbekend">Onbekend</td>
+            <td>7.5</td>
+        </tr>
+        <tr class="alt">
+            <td>4</td>
+            <td>Steve</td>
+            <td>Stevenson</td>
+            <td class="onbekend">Onbekend</td>
+            <td>103 16</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Alex</td>
+            <td>Alexson</td>
+            <td>Stockholm</td>
+            <td>103 16</td>
+            <td>8.5</td>
+        </tr>
+        </tbody>
+        <tfoot >
+        <tr id="no-paging">
+            <td>
+                Gem.
+            </td>
+            <td colspan="4">
+            </td>
+            <td>
+                8
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    <ul>
+        <li>
+            De css regel <code>.onbekend {background-color:red;}</code> heeft geen effect op <code>&lt;td&gt;</code> cel in een <code>&lt;tr&gt;</code> rij met <code>class="alt"</code>,
+            maar wel in een <code>&lt;tr&gt;</code> rij zonder deze <code>'alt'</code> class omdat de <code>background-color</code> die bepaald wordt in de selector
+            <code>table tbody .alt td</code> van rijen met <code>class="alt"</code> specifieker is dan de selector <code>.onbekend</code> dus het kleur wordt overschreven door die van de alt.
+        </li>
+    </ul>
+</body>
+</html>

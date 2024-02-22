@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdracht 1</title>
+
+    <link rel="stylesheet" href="styles/stijl.css">
+</head>
+<body>
+    Met classes
+    <br>
+    <ul>
+        <li class="menuitem"><a href="...">products</a></li>
+        <li class="menuitem"><a href="...">distributors</a></li>
+        <li class="menuitem"><a href="...">contact</a></li>
+    </ul>
+    <br>
+    <hr>
+    Zonder classes
+    <br>
+    <ul class="menu">
+        <li><a href="...">products</a></li>
+        <li><a href="...">distributors</a></li>
+        <li><a href="...">contact</a></li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+    Css:
+    <br>
+    <br>
+    <code>
+        li {
+            display:inline-block;
+            width:150px;
+        }
+
+        li > a {
+            color:red;
+        }
+    </code>
+    <br>
+    <br>
+    Dit zal wel toegepast worden op elke <code>ul</code>. Indien dit niet gewenst is kan er nog een andere manier toegepast worden:
+    Je geeft de <code>ul</code> een class, bijvoorbeeld "menu", dan kun je volgende css gebruiken:
+    <br>
+    <br>
+    <code>
+        .menu > li {
+        display:inline-block;
+        width:150px;
+        }
+
+        .menu > li > a {
+        color:red;
+        }
+    </code>
+    <br>
+</body>
+</html>

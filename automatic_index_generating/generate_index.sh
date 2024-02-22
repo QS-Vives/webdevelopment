@@ -211,7 +211,7 @@ fi
 echo "$(date --rfc-3339=ns): [STARTING] Generating index files..."
 
 # List of (sub)folders we should not check.
-filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/" "/imported_pages/")
+filtered_dirs=("/.git/" "/images/" "/styles/" "/.github/" "/automatic_index_generating/" "/.idea/" "/imported_pages/" "/Template/")
 
 # Initialize the associative array to store directory names.
 declare -A directory_dict
