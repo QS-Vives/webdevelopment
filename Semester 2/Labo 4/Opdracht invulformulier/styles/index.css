@@ -1,0 +1,7 @@
+input {
+    margin: 3px;
+}
+
+input[type=checkbox], input[type=radio] {
+    vertical-align: middle;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Opdracht invulformulier</title>
+</head>
+<body>
+    <form action="index.html" method="post">
+        <label for="first_name">First name*: </label>
+        <input type="text" name="first_name" id="first_name" placeholder="Your first name" autofocus required="required">
+        <br>
+        <label for="last_name">Last name*: </label>
+        <input type="text" name="last_name" id="last_name" placeholder="Your last name" required="required">
+        <br>
+        <span>Which sport do you train?</span>
+        <br>
+        <label for="sport_running">Running </label>
+        <input type="checkbox" name="sport" id="sport_running">
+        <br>
+        <label for="sport_swimming">Swimming </label>
+        <input type="checkbox" name="sport" id="sport_swimming">
+        <br>
+        <label for="sport_rowing">Rowing </label>
+        <input type="checkbox" name="sport" id="sport_rowing">
+        <br>
+        <span>What is your gender?</span>
+        <br>
+        <input type="radio" name="gender" id="gender_male">
+        <label for="gender_male">Male </label>
+        <br>
+        <input type="radio" name="gender" id="gender_female">
+        <label for="gender_female">Female </label>
+        <br>
+        <label for="favorite_movie">Favorite movie: </label>
+        <input type="text" name="favorite_movie" id="favorite_movie">
+        <br>
+        <label for="favorite_quote">Favorite quote: </label>
+        <input type="text" name="favorite_quote" id="favorite_quote" placeholder="Write your favorite quote">
+        <br>
+        <label for="password">Password*: </label>
+        <input type="password" name="password" id="password" required="required">
+        <br>
+        <label for="favorite_food">Favorite food: </label>
+        <select name="favorite_food" id="favorite_food">
+            <option value="hamburger" selected="selected">Hamburger</option>
+            <option value="fries">Fries</option>
+            <option value="pizza">Pizza</option>
+        </select>
+        <br>
+        <input type="file" aria-label="file">
+        <br>
+        <label for="email">Email adress: </label>
+        <input type="text" name="email" id="email" placeholder="Enter your email adress">
+        <br>
+        <label for="favorite_site">Favorite site: </label>
+        <input type="text" name="favorite_site" id="favorite_site" placeholder="Enter the URL your favorite site">
+        <br>
+        <label for="favorite_number">Favorite number between 1-10: </label>
+        <input type="number" name="favorite_number" id="favorite_number" min="1" max="10">
+        <br>
+        <label for="favorite_number_range">Favorite number between 11-1000: </label>
+        <input type="range" name="favorite_number_range" id="favorite_number_range" min="11" max="1000">
+        <br>
+        <label for="birth_date">When were you born? </label>
+        <input type="date" name="birth_date" id="birth_date">
+        <br>
+        <label for="zip_code">Belgium zip-code reg number*: </label>
+        <input type="text" name="zip_code" id="zip_code" placeholder="9999" required="required" size="4" maxlength="4">
+        <br>
+        <label for="search">Search for something: </label>
+        <input type="search" name="search" id="search">
+        <br>
+        <label for="favorite_color">What is your favorite color? </label>
+        <input type="color" name="favorite_color" id="favorite_color">
+        <br>
+        <input type="submit">
+
+
+    </form>
+<script src="scripts/index.js"></script>
+</body>
+</html>
