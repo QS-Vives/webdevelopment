@@ -4,7 +4,9 @@ const setup = () => {
 }
 
 const run = () => {
-    let text = document.getElementById("input").value;
+    /*  deze functie is specifiek enkel voor 1 woord, indien de gebruiker een spatie typt in het woord
+        wordt dit gezien als user error en behandeld alsof het 1 woord is */
+    let text = document.getElementById("input").value.replaceAll(" ", "");
 
     if (text.length < 3) return;
     else if (text.length === 3) {
