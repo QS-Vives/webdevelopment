@@ -1,0 +1,11 @@
+.error_message {
+    color:red;
+}
+
+input.invalid {
+    border : solid 1px red;
+}
+
+.line_container {
+    margin-bottom: 10px;
+}
