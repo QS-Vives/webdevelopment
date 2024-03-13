@@ -7,33 +7,33 @@
 	<title>Opdracht formvalidatie</title>
 </head>
 <body>
-	<form>
+	<form action="javascript:void(0);">
 		<div class="line_container">
 			<label for="input_voornaam">Voornaam</label>
-			<input type="text" id="input_voornaam" />
+			<input type="text" id="input_voornaam">
 			<span class="error_message" id="error_voornaam"></span>
 		</div>
 		<div class="line_container">
 			<label for="input_naam">Familienaam</label>
-			<input type="text" id="input_naam" />
+			<input type="text" id="input_naam">
 			<span class="error_message" id="error_naam"></span>
 		</div>
 		<div class="line_container">
-			<label for="input_geboorte">Geboortedatum</label>
-			<input type="text" id="input_geboorte" />
-			<span class="error_message" id="error_geboorte"></span>
+			<label for="input_geboorte_datum">Geboortedatum</label>
+			<input type="text" id="input_geboorte_datum" placeholder="jjjj-mm-dd">
+			<span class="error_message" id="error_geboorte_datum"></span>
 		</div>
 		<div class="line_container">
-			<label for="input_voornaam">Voornaam</label>
-			<input type="text" id="input_voornaam" />
-			<span class="error_message" id="error_voornaam"></span>
+			<label for="input_email">Email</label>
+			<input type="text" id="input_email">
+			<span class="error_message" id="error_email"></span>
 		</div>
 		<div class="line_container">
-			<label for="input_voornaam">Voornaam</label>
-			<input type="text" id="input_voornaam" />
-			<span class="error_message" id="error_voornaam"></span>
+			<label for="input_aantal_kids">Aantal kinderen</label>
+			<input type="text" id="input_aantal_kids">
+			<span class="error_message" id="error_aantal_kids"></span>
 		</div>
-		<button id="validate">Valideer</button>>
+		<button id="validate">Valideer</button>
 	</form>
 	<script src="scripts/index.js"></script>
 </body>
