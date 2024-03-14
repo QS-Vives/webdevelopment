@@ -49,6 +49,7 @@ const valideer_geboorte_datum = () => {
     let input_value = input_element.value.trim();
     if (input_value.length === 0) add_error(input_name, "verplicht");
     else if (! /^\d{4}-\d{2}-\d{2}$/.test(input_value) ) add_error(input_name, "formaat is niet jjjj-mm-dd");
+    // test voor geldige datum, houdt geen rekening met maanden van minder dan 31 dagen
     else if (! /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$/.test(input_value) ) add_error(input_name, "geen geldige datum");
     else remove_error(input_name);
 };
