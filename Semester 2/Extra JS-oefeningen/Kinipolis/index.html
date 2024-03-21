@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Kinipolis</title>
+</head>
+<body>
+    <div class="grid">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+        <img src="images/seat_avail.png" alt="">
+    </div>
+
+    <div class="inputs">
+        <form action="javascript:find_seats()">
+            <label for="input_number_seats">Enter amount of seats you want: </label>
+            <input type="number" id="input_number_seats" name="number_seats" value="1" min="1" max="36" onchange="remove_seat_selection_input()">
+            <button id="find_seats">Find Seats</button>
+        </form>
+    </div>
+    <div class="inputs">
+        <form action="javascript:book()" id="selection_form">
+            <button id="book">Book</button>
+        </form>
+    </div>
+<script src="scripts/index.js"></script>
+</body>
+</html>
