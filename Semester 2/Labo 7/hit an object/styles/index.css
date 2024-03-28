@@ -1,0 +1,9 @@
+#play_field{
+    width: 800px;
+    height: 600px;
+}
+
+
+#target {
+    position: absolute;
+}
