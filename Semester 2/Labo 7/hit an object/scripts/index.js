@@ -54,6 +54,7 @@ const reset_timer = () => {
  
 const reset = () => {
     global.score = 0;
+    update_score_display();
     reset_timer();
 
     document.getElementById("restart").style.display = "none";
