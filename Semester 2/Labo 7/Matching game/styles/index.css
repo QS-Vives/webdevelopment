@@ -22,7 +22,7 @@ body {
     max-width: 600px;
     min-width: 80px;
     position: relative;
-    aspect-ratio: 0.666666666666666666666666666666;
+    aspect-ratio: 2 / 3;
 }
 
 .card_side_container {
@@ -86,7 +86,7 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
     z-index: 1000;
     background-color: white;
     border: 12px solid #222;
