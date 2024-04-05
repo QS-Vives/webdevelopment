@@ -8,10 +8,32 @@
 </head>
 <body>
     <div class="score_container">
+        <div class="hud_container_40">
+
+        </div>
         <span id="display_score">0</span>
+        <div class="hud_container_40">
+
+        </div>
     </div>
     <div class="game_container">
 
+    </div>
+    <div class="settings_container">
+        <form id="form_settings" action="javascript:update_settings()">
+            <span>Size:</span>
+            <label for="input_number_width">Width: </label>
+            <input type="number" name="game_width" id="input_number_width" min="3" value="22">
+            <label for="input_number_height">Height: </label>
+            <input type="number" name="game_height" id="input_number_height" min="3" value="8">
+            <label for="input_checkbox_wall">Walls: </label>
+            <input type="checkbox" name="walls" id="input_checkbox_wall" value="true" checked="checked">
+            <label for="input_number_speed_start">Snake speed at start (tiles per second): </label>
+            <input type="number" name="game_speed_start" id="input_number_speed_start" step=".01" min="1" value="3">
+            <label for="input_number_speed_end">Snake speed at end (tiles per second): </label>
+            <input type="number" name="game_speed_end" id="input_number_speed_end" step=".01" min="1" value="6">
+            <button>New Game</button>
+        </form>
     </div>
 <script src="scripts/index.js"></script>
 </body>

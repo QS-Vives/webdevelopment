@@ -1,0 +1,18 @@
+.ui_element {
+    vertical-align: top;
+}
+
+#play_field {
+    width: 800px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+#display {
+    position: relative;
+    z-index: 1000;
+}
+
+#image {
+    position: relative;
+}

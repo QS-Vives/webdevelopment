@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head data-author="QS-Vives">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Opdracht: Matching game</title>
+</head>
+<body>
+    <div id="loading_popup" class="popup">
+        <p id="loading_message">Loading...</p>
+    </div>
+
+    <div id="game_container" class="no_input">
+    </div>
+
+    <div id="game_won_message" class="popup no_display">
+        <p id="win_message_paragraph">You have won!</p>
+        <p id="stats">You clicked _x_ times, made _y_ mistakes.</p>
+        <button id="button_play_again">Play again</button>
+        <br>
+        <a href="assets/assets_credits.txt">Assets credits.</a>
+    </div>
+
+    <template id="card_template">
+        <div class="card_container">
+            <div class="card_side_container back">
+                <img class="card_img" src="images/achterkant.png" alt="">
+            </div>
+            <div class="card_side_container front">
+                <img class="card_img" src="images/achterkant.png" alt="">
+            </div>
+        </div>
+    </template>
+
+<script src="scripts/index.js"></script>
+</body>
+</html>

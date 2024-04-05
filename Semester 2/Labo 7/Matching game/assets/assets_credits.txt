@@ -1,0 +1,141 @@
+Anything not listed was made by me.
+
+########################################
+Card images
+########################################
+
+----------------------------------------
+
+Title:
+    Various images
+
+Author:
+    https://cc0.photo/about
+
+URL:
+    https://cc0.photo
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * (Various files)
+
+----------------------------------------
+
+Title:
+    Speaker Icon
+
+Author:
+    Mobius
+
+URL:
+    https://commons.wikimedia.org/wiki/File:Speaker_Icon.svg
+
+License(s):
+    * Public Domain ( https://en.wikipedia.org/wiki/en:public_domain)
+
+Copyright/Attribution Notice:
+    Mobius, Public domain, via Wikimedia Commons
+
+File(s):
+    * https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png
+
+----------------------------------------
+
+########################################
+Card sound effects
+########################################
+
+----------------------------------------
+
+Title:
+    100 CC0 SFX
+
+Author:
+    rubberduck
+
+URL:
+    https://opengameart.org/content/100-cc0-sfx
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * 100-CC0-SFX.zip
+
+----------------------------------------
+
+Title:
+    58 Random Sound Effects
+
+Author:
+    TokyoGeisha
+
+URL:
+    https://opengameart.org/content/58-random-sound-effects
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    Feel free to use it anyway you want. No credit necessary.
+
+File(s):
+    * Sound Effects.zip
+
+----------------------------------------
+
+Title:
+    54 Casino sound effects (cards, dice, chips)
+
+Author:
+    Kenney
+
+URL:
+    https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+SPECIAL ATTRIBUTION INSTRUCTIONS:
+    Credit "Kenney.nl" or "www.kenney.nl", this is not mandatory.
+
+File(s):
+    * Casino sound package.zip
+
+----------------------------------------
+
+Title:
+    202 More Sound Effects
+
+Author:
+    OwlishMedia
+
+URL:
+    https://opengameart.org/content/202-more-sound-effects
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * MoreSounds.zip
+
+----------------------------------------
+
+Title:
+    100 CC0 SFX #2
+
+Author:
+    rubberduck
+
+URL:
+    https://opengameart.org/content/100-cc0-sfx-2
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * sfx_100_v2.zip
+
+----------------------------------------

@@ -1,0 +1,159 @@
+:root {
+    --card_turn_animation_speed: 1500ms;
+    --card_hide_animation_speed: 1000ms;
+}
+
+body {
+    margin: 0;
+}
+
+#game_container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.no_input {
+    cursor: wait;
+}
+
+.card_container {
+    user-select: none;
+    margin: max(0.8vmin, 6px);
+    max-width: 600px;
+    min-width: 80px;
+    position: relative;
+    aspect-ratio: 2 / 3;
+}
+
+.card_side_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.card_img {
+    border-radius: 2vmax;
+    border: max(0.5vmin, 4px) solid #222;
+}
+
+/*noinspection CssInvalidPropertyValue*/
+.card_side_container, .card_img {
+    /* https://caniuse.com/intrinsic-width */
+    width: stretch;
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+#game_container:not(.no_input) .card_container:hover:not(.turn_and_show):not(.turn_and_hide) img  {
+    border: max(0.7vmin, 6px) solid #666;
+}
+
+.card_container.incorrect_match img {
+    border-color: #dd4444;
+}
+
+.card_container.correct_match img {
+    border-color: #44dd44;
+}
+
+.front {
+    transform: rotateY(-180deg);
+}
+
+.turn_and_show .front {
+    animation: ease-in-out turn_to_zero var(--card_turn_animation_speed) forwards;
+}
+
+.turn_and_show .back {
+    animation: ease-in-out turn_to_180 var(--card_turn_animation_speed) forwards;
+}
+
+.turn_and_hide .front {
+    animation: ease-in-out turn_to_180 var(--card_turn_animation_speed) forwards;
+}
+
+.turn_and_hide .back {
+    animation: ease-in-out turn_to_zero var(--card_turn_animation_speed) forwards;
+}
+
+.hidden {
+    animation: ease-in hiding var(--card_hide_animation_speed) forwards;
+}
+
+.popup {
+    padding: 0.25em 0.5em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    border: 12px solid #222;
+    border-radius: 32px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.popup p#win_message_paragraph {
+    font-size: 5em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.popup p#loading_message {
+    font-size: 3em;
+    margin: 0.25em;
+}
+
+.popup p {
+    font-size: 1.2em;
+}
+
+.popup button {
+    font-size: 1.5em;
+}
+
+.popup a {
+    font-size: 0.8em;
+    color: #757575;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.no_display {
+    display: none;
+}
+
+@keyframes turn_to_180 {
+    0% {
+        transform: rotateY(0);
+    }
+
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+
+@keyframes turn_to_zero {
+    0% {
+        transform: rotateY(-180deg);
+    }
+
+    100% {
+        transform: rotateY(0);
+    }
+}
+
+@keyframes hiding {
+    0% {
+        opacity: 100%;
+        scale: 100%;
+    }
+
+    100% {
+        scale: 0;
+        opacity: 0;
+    }
+}
