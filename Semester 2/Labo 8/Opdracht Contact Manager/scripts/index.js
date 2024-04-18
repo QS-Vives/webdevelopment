@@ -94,7 +94,9 @@ const update_form = () => {
     for (let i = 0; i < inputs.length; ++i) {
         let property = persoon[properties[i]];
         if (properties[i] === "geboorteDatum") {
-            inputs[i].value = property.getFullYear() + "-"+ (property.getMonth()+1) + "-" + property.getDate();
+            inputs[i].value = property.getFullYear().toString().padStart(4, "0")
+                + "-" + (property.getMonth()+1).toString().padStart(2, "0")
+                + "-" + property.getDate().toString().padStart(2, "0");
         } else {
             inputs[i].value = property;
         }
