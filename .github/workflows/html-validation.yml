@@ -20,4 +20,4 @@ jobs:
       with:
         root: ./
         css: true
-        extra: "--show-warnings --ignore-re /\\.\\/Semester%201\\/|/\\.\\/Semester%202\\/Labo%204\\/"
+        extra: "--show-warnings --ignore-re /\\.\\/Semester%201\\/|/\\.\\/Semester%202\\/Labo%204\\/|/\\.\\/Semester%202\\/Labo%207\\/"
