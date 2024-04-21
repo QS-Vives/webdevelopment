@@ -8,11 +8,6 @@ const setup = () => {
         postcode: "8500",
         gemeente: "Kortrijk"
     },
-    adres: {
-        straat: "Kerkstraat 13",
-        postcode: "8500",
-        gemeente: "Wevelgem"
-    },
     isIngeschreven: true,
     namenVanExen: ["Sofie", "Berta", "Philip", "Albertoooo"],
     aantalAutos: 2
@@ -24,7 +19,7 @@ const setup = () => {
 
     let parsed = JSON.parse(string);
 
-    console.log(parsed)
+    console.log(parsed);
 }
 
 window.addEventListener("load", setup);

@@ -35,7 +35,7 @@ const bewaarBewerktePersoon = () => {
 
     // indien ok, bewaar de ingegeven data.
     if (document.querySelector(".invalid")) {
-        return
+        return;
     }
     // een nieuw aangemaakte persoon voegen we toe
     // een bestaande persoon in de lijst passen we aan
@@ -43,7 +43,7 @@ const bewaarBewerktePersoon = () => {
         global.current_id = global.personen.length;
     }
 
-    let inputs = document.querySelectorAll("form input")
+    let inputs = document.querySelectorAll("form input");
 
     global.personen[global.current_id] = {
         voornaam: inputs[0].value,
@@ -51,7 +51,7 @@ const bewaarBewerktePersoon = () => {
         geboorteDatum: new Date(inputs[2].value),
         email: inputs[3].value,
         aantalKinderen: inputs[4].value
-    }
+    };
 
     // zorg ervoor dat de naam en voornaam ook aangepast en/of zichtbaar zijn in de lijst na updaten
     update_list();
@@ -105,7 +105,7 @@ const update_form = () => {
 
 const select_person = (event) => {
     if (event.target.tagName.toLowerCase() !== 'option') {
-        return
+        return;
     }
     global.current_id = document.getElementById("lstPersonen").selectedIndex;
     update_form();

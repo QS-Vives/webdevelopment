@@ -6,7 +6,7 @@ const setup = () => {
 
     let days = Math.floor(diff/1000/60/60/24);
 
-    console.log(`${days} dagen`)
+    console.log(`${days} dagen`);
 }
 
 window.addEventListener("load", setup);
