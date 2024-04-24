@@ -14,7 +14,7 @@ const setup = () => {
         restore_sliders(previous_sliders);
     }
 
-     let stored_colors = localStorage.getItem("stored_colors");
+    let stored_colors = localStorage.getItem("stored_colors");
 
     if (stored_colors) {
         restore_colors(stored_colors);
@@ -27,7 +27,7 @@ const setup = () => {
 const update_stored_colors = () => {
     let stored_colors = [];
     for (let swatch of document.getElementsByClassName("stored_swatch")) {
-        stored_colors.push(swatch.style.backgroundColor)
+        stored_colors.push(swatch.style.backgroundColor);
     }
 
     localStorage.setItem("stored_colors", JSON.stringify(stored_colors));
@@ -37,7 +37,7 @@ const restore_colors = (stored_colors) => {
     let previous_colors = JSON.parse(stored_colors);
 
     for (let i = 0; i < previous_colors.length; ++i) {
-        store(previous_colors[i])
+        store(previous_colors[i]);
     }
 }
 
@@ -77,7 +77,7 @@ const store = (color = "") => {
     if (color === "") {
         new_background_color = document.getElementById("swatch").style.backgroundColor;
     } else {
-        new_background_color = color
+        new_background_color = color;
     }
 
     let element = document.importNode(document.getElementById("template_stored_swatch").content, true).firstElementChild;
@@ -110,7 +110,7 @@ const restore = (event) => {
 }
 
 const remove = (event) => {
-    event.currentTarget.parentElement.remove()
+    event.currentTarget.parentElement.remove();
 
     update_stored_colors();
 
