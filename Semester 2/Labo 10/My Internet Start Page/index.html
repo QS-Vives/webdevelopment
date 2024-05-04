@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head data-author="QS-Vives">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Opdracht: My Internet Start Page</title>
+</head>
+<body>
+    <main class="container">
+        <section>
+            <form action="javascript:execute_command()">
+                <h1>My Internet Start Page</h1>
+                <label for="input_command">Zoekopdracht</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter commando" name="input_command" id="input_command">
+                <p>Start your commando with "/[character] [zoekopdracht]"</p>
+                <button class="btn btn-primary btn-lg submit_command" id="submit_command">GO!</button>
+            </form>
+        </section>
+        <section class="mt-5">
+            <h2>History</h2>
+            <div id="history_container" class="container">
+            </div>
+        </section>
+    </main>
+
+    <template id="template_row">
+        <div class="row">
+            <div class="col mb-3">
+            </div>
+            <div class="col mb-3">
+            </div>
+            <div class="col mb-3">
+            </div>
+        </div>
+    </template>
+
+    <template id="template_card">
+        <div class="card text-white">
+            <div class="card-body">
+                <h5 class="card-title">Website</h5>
+                <p class="card-text">Search</p>
+                <a target=”_blank” href="#" class="btn btn-primary">Go!</a>
+            </div>
+        </div>
+    </template>
+
+<script src="scripts/index.js"></script>
+</body>
+</html>

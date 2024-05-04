@@ -1,0 +1,10 @@
+p {
+    font-size: smaller;
+}
+
+#submit_command {
+    width: 100%;
+    background-color: #28a745;
+    border-color: #8ed19d;
+    color: white;
+}
