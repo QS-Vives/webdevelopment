@@ -10,27 +10,29 @@
 <body>
     <main class="container">
         <section>
-            <h1>My Internet Start Page</h1>
-            <label for="input_command">Zoekopdracht</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter commando" name="input_command">
-            <p>Start your commando with "/[charcter] [zoekopdracht]"</p>
-            <button class="btn" id="submit_command">GO!</button>
+            <form action="javascript:execute_command()">
+                <h1>My Internet Start Page</h1>
+                <label for="input_command">Zoekopdracht</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter commando" name="input_command" id="input_command">
+                <p>Start your commando with "/[character] [zoekopdracht]"</p>
+                <button class="btn btn-primary btn-lg submit_command" id="submit_command">GO!</button>
+            </form>
         </section>
-        <section>
+        <section class="mt-5">
             <h2>History</h2>
-            <div class="container">
+            <div id="history_container" class="container">
             </div>
         </section>
     </main>
 
     <template id="template_row">
         <div class="row">
-            <div class="col">
+            <div class="col mb-3">
             </div>
-            <div class="col">
+            <div class="col mb-3">
             </div>
-            <div class="col">
+            <div class="col mb-3">
             </div>
         </div>
     </template>
@@ -40,7 +42,7 @@
             <div class="card-body">
                 <h5 class="card-title">Website</h5>
                 <p class="card-text">Search</p>
-                <a href="#" class="btn btn-primary">Go!</a>
+                <a target=”_blank” href="#" class="btn btn-primary">Go!</a>
             </div>
         </div>
     </template>
