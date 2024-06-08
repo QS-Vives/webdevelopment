@@ -1,0 +1,11 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.inputs {
+    margin-top: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

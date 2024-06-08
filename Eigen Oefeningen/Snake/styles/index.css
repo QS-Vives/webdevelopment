@@ -1,0 +1,53 @@
+.score_container {
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+.settings_container {
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+.hud_container_40 {
+    width: 40vw;
+}
+
+#display_score {
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    padding: 6px;
+    min-width: 50px;
+    min-height: 38px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.game_container {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+}
+
+.square {
+    background-color: blue;
+    border: 1px solid black;
+    aspect-ratio: 1;
+}
+
+.apple {
+    background-color: red;
+}
+
+.snake {
+    background-color: green;
+}
+
+.bomb {
+    background-color: #222;
+}
+
+.wall {
+    background-color: grey;
+}
