@@ -1,3 +1,7 @@
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 .score_container {
     display: flex;
     justify-content: center;
@@ -8,10 +12,23 @@
     display: flex;
     justify-content: center;
     padding: 3px;
+    flex-wrap: wrap;
+}
+
+.setting_container {
+    width: fit-content;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    border: solid black 2px;
+    background-color: #EEE;
 }
 
 .hud_container_40 {
     width: 40vw;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
 }
 
 #display_score {
@@ -50,4 +67,72 @@
 
 .wall {
     background-color: grey;
+}
+
+input[type=number] {
+    width: 50px;
+}
+
+.popup {
+    padding: 0.25em 1em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    border: 5px solid #222;
+    border-radius: 25px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 5px 5px 5px black;
+    font-size: 110%;
+}
+
+.no_display {
+    display: none;
+}
+
+.ul_centered_li li {
+    padding-right: 40px;
+}
+
+.popup_close_button {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+    justify-content: center;
+}
+
+.snake_head {
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+
+.direction_down {
+    background-image: url("../images/down.svg");
+}
+
+.direction_up {
+    background-image: url("../images/up.svg");
+}
+
+.direction_left {
+    background-image: url("../images/left.svg");
+}
+
+.direction_right {
+    background-image: url("../images/right.svg");
+}
+
+#button_new_game {
+    min-width: 100px;
 }

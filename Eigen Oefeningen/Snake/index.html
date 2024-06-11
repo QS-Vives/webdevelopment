@@ -9,33 +9,76 @@
 <body>
     <div class="score_container">
         <div class="hud_container_40">
-
+            <button id="button_show_controls">Controls?</button>
         </div>
         <span id="display_score">0</span>
         <div class="hud_container_40">
 
         </div>
     </div>
-    <div class="game_container">
+    <div id="game_container" class="game_container">
 
     </div>
-    <div class="settings_container">
-        <form id="form_settings" action="javascript:update_settings()">
-            <span>Size:</span>
-            <label for="input_number_width">Width: </label>
-            <input type="number" name="game_width" id="input_number_width" min="3" value="22">
-            <label for="input_number_height">Height: </label>
-            <input type="number" name="game_height" id="input_number_height" min="3" value="8">
-            <label for="input_checkbox_wall">Walls: </label>
-            <input type="checkbox" name="walls" id="input_checkbox_wall" value="true" checked="checked">
-            <label for="input_number_bombs">Amount of bombs: </label>
-            <input type="number" name="game_bombs" id="input_number_bombs" step="1" min="0" value="0">
-            <label for="input_number_speed_start">Snake speed at start (tiles per second): </label>
-            <input type="number" name="game_speed_start" id="input_number_speed_start" step=".01" min="1" value="3">
-            <label for="input_number_speed_end">Snake speed at end (tiles per second): </label>
-            <input type="number" name="game_speed_end" id="input_number_speed_end" step=".01" min="1" value="6">
-            <button>New Game</button>
+    <div>
+        <form class="settings_container" id="form_settings" action="javascript:apply_settings_or_start_new_game()">
+            <div class="setting_container">
+                <span>Size:</span>
+                <label for="input_number_width">Width: </label>
+                <input type="number" name="game_width" id="input_number_width" min="3" value="22">
+                <label for="input_number_height">Height: </label>
+                <input type="number" name="game_height" id="input_number_height" min="3" value="8">
+            </div>
+            <div class="setting_container">
+                <label for="input_checkbox_wall">Walls: </label>
+                <input type="checkbox" name="walls" id="input_checkbox_wall" value="true" checked="checked">
+            </div>
+            <div class="setting_container">
+                <label for="input_number_bombs">Amount of bombs: </label>
+                <input type="number" name="game_bombs" id="input_number_bombs" step="1" min="0" value="0">
+            </div>
+            <div class="setting_container">
+                <label for="input_number_speed_start">Snake speed at start (tiles per second): </label>
+                <input type="number" name="game_speed_start" id="input_number_speed_start" step=".01" min="1" value="3">
+                <label for="input_number_speed_end">Snake speed at end (tiles per second): </label>
+                <input type="number" name="game_speed_end" id="input_number_speed_end" step=".01" min="1" value="6">
+            </div>
+            <div class="setting_container">
+                <button id="button_new_game" data-action="play">Play</button>
+            </div>
         </form>
+    </div>
+
+    <div id="popup_controls" class="popup no_display">
+        <div class="popup_close_button">
+            x
+        </div>
+        <h3>
+            How to play:
+        </h3>
+        <p>
+            Choose your settings, hit apply, then play. See controls below.
+        </p>
+        <h3>
+            Controls:
+        </h3>
+        <ul class="ul_centered_li">
+            <li>Space: pause</li>
+        </ul>
+    </div>
+
+    
+    <div id="popup_game_over" class="popup no_display">
+        <div class="popup_close_button">
+            x
+        </div>
+        <h2>
+            Game over!
+        </h2>
+        <div>
+            <p>
+                You <span>win?</span>
+            </p>
+        </div>
     </div>
 <script src="scripts/index.js"></script>
 </body>
