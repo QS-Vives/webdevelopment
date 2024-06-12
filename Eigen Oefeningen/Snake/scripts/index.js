@@ -1,9 +1,10 @@
 //TODO finish controls popup 
 //TODO finish dead screen popup 
-//TODO only allow one popup at a time
 //TODO close popup when game start
 //TODO high score saving 
 //TODO bugtest
+//BUG head direction disapear on pause
+//TODO add button controls 
 
 let global = {
     game: {
@@ -15,7 +16,8 @@ let global = {
         snake: {
             head: [0, 0],
             indexes: [],
-            tail: 0
+            tail: 0,
+            length: 0
         }
     },
     key: "ArrowRight",
@@ -27,10 +29,9 @@ const setup = () => {
     for (let element of document.getElementsByClassName("popup_close_button")) {
         element.addEventListener("click", close_popup);
     }
-    //TODO generalize
-    document.getElementById("button_show_controls").addEventListener("click", () => {
-        document.getElementById("popup_controls").classList.toggle("no_display");
-    })
+    for (let element of document.getElementsByClassName("popup_open_button")) {
+        element.addEventListener("click", open_popup);
+    }
     document.getElementById("form_settings").addEventListener("input", settings_changed);
     global.game.state = "reset";
     main_loop();
@@ -123,6 +124,7 @@ const main_loop = () => {
             walls ? global.game.snake.head = [0, 1] : global.game.snake.head = [-1, 0];
             global.game.snake.indexes = [];
             global.game.snake.length = 1;
+            update_score(1);
             global.game.snake.tail = global.game.elements - 1;
             set_new_apple();
 
@@ -146,6 +148,7 @@ const main_loop = () => {
                 toggle_settings_enabled(true);
                 global.key = global.last_move_key;
             } else {
+                close_any_open_popup();
                 toggle_settings_enabled(false);
                 global.game.state = "playing";
                 global.key = global.last_move_key;
@@ -166,6 +169,7 @@ const main_loop = () => {
             let head = global.game.snake.head;
             let snake_indexes = global.game.snake.indexes;
             let tail = global.game.snake.tail;
+            let length = global.game.snake.length;
 
             switch (global.key) {
                 case "ArrowDown":
@@ -203,7 +207,7 @@ const main_loop = () => {
                 set_new_apple();
                 //set_new_apple();
 
-                update_score(length);
+                
                 got_apple = true;
             }
 
@@ -229,6 +233,7 @@ const main_loop = () => {
             if (got_apple) {
                 length++;
                 got_apple = false;
+                update_score(length);
             } else {
                 reset_at_index(tail);
                 tail = snake_indexes.shift();
@@ -237,12 +242,13 @@ const main_loop = () => {
             //let del = get_delay_amount(300, 50, length);
             //console.log(del)
 
-
+            
             
             global.game.snake.head = head;
             global.game.snake.indexes = snake_indexes;
             global.game.snake.tail = tail;
             global.game.step++;
+            global.game.snake.length = length;
 
             setTimeout(main_loop, get_delay_amount(length));
             return;
@@ -352,10 +358,11 @@ const key_reverse = (key) => {
 }
 
 const toggle_settings_enabled = (bool) => {
-    let form_element = document.getElementById("form_settings");
-    let form_elements = form_element.elements;
+    // let form_element = document.getElementById("form_settings");
+    // let form_elements = form_element.elements;
+    let elements = document.querySelectorAll(".setting_container > *")
 
-    for (let element of form_elements) {
+    for (let element of elements) {
         if (element.id !== "button_new_game") {  //suboptimal implementation regarding button_new_game
             element.disabled = !bool;
         } else if (global.game.state === "playing") {
@@ -389,17 +396,31 @@ const delay = (ms) => {
 }
 
 const close_popup = (event) => {
-    event.target.parentElement.classList.add("no_display")
+    event.target.parentElement.classList.add("no_display");
+}
+
+const close_any_open_popup = () => {
+    document.querySelector(".popup:not(.no_display)")?.classList.add("no_display");
+}
+
+const open_popup = (event=null, id=null) => {
+    close_any_open_popup();
+    if (global.game.state === "playing") return;
+    if (event) {
+        id = event.target.getAttribute("data-target_popup_id");
+    }
+    document.getElementById(id).classList.remove("no_display");
 }
 
 const apply_settings_or_start_new_game = () => {
     let button_element = document.getElementById("button_new_game");
     
     if (button_element.getAttribute("data-action") === "reset") {
-        button_element.setAttribute("data-action", "play")
-        button_element.innerText = "Play"
+        button_element.setAttribute("data-action", "play");
+        button_element.innerText = "Play";
         global.game.state = "reset";
     } else {
+        close_any_open_popup();
         if (global.game.state === "await_start") {
             global.game.state = "playing";
         } else {

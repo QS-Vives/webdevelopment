@@ -24,6 +24,10 @@ body {
     background-color: #EEE;
 }
 
+.setting_container:has(:disabled) {
+    background-color: #AAA;
+}
+
 .hud_container_40 {
     width: 40vw;
     display: flex;
@@ -131,6 +135,16 @@ input[type=number] {
 
 .direction_right {
     background-image: url("../images/right.svg");
+}
+
+.fill_height {
+    /* https://caniuse.com/mdn-css_properties_width_stretch */
+    /*noinspection CssInvalidPropertyValue*/
+    height: stretch;
+    /*noinspection CssInvalidPropertyValue*/
+    height: -webkit-fill-available;
+    /*noinspection CssInvalidPropertyValue*/
+    height: -moz-available;
 }
 
 #button_new_game {

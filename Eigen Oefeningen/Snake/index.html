@@ -9,11 +9,15 @@
 <body>
     <div class="score_container">
         <div class="hud_container_40">
-            <button id="button_show_controls">Controls?</button>
+            <div class="setting_container">
+                <button id="button_show_controls" class="popup_open_button fill_height" data-target_popup_id="popup_controls">Controls</button>
+            </div>
         </div>
         <span id="display_score">0</span>
         <div class="hud_container_40">
-
+            <div class="setting_container">
+                <button id="button_show_highscores" class="popup_open_button fill_height" data-target_popup_id="popup_highscores">Highscores</button>
+            </div>
         </div>
     </div>
     <div id="game_container" class="game_container">
@@ -77,6 +81,21 @@
         <div>
             <p>
                 You <span>win?</span>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="popup_highscores" class="popup no_display">
+        <div class="popup_close_button">
+            x
+        </div>
+        <h2>
+            Highscores:
+        </h2>
+        <div>
+            <p>
+                To <span>do</span>
             </p>
         </div>
     </div>
