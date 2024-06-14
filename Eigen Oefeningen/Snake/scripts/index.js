@@ -5,6 +5,14 @@
 //TODO bugtest
 //BUG head direction disapear on pause
 //TODO add button controls 
+//TODO if state playing and page closed -> save game, change state to paused
+//TODO move tail first, then check for head collison
+//TODO bomb every 11 steps -> last step no bomb for one step
+//BUG bombs do not gameover
+//BUG sometimes apples don't count
+//TODO remember setting
+//TODO reset settings [button]
+
 
 let global = {
     game: {
@@ -126,7 +134,7 @@ const main_loop = () => {
             global.game.snake.length = 1;
             update_score(1);
             global.game.snake.tail = global.game.elements - 1;
-            set_new_apple();
+            set_new_classname_at_free_tile("apple");
 
             global.key = "ArrowRight";
 
@@ -195,18 +203,16 @@ const main_loop = () => {
                 let current_bombs = document.querySelectorAll(".square.bomb");
                 for (let index = 0; index < amount_bombs; index++) {
                         try {let old_bomb_coordinates = global_index_to_coordinates(current_bombs[index].id);
-                        remove_old_bomb_at(old_bomb_coordinates[0], old_bomb_coordinates[1]); }
+                        remove_classname_at("bomb", old_bomb_coordinates[0], old_bomb_coordinates[1]); }
                         catch (e) {}
-                        set_new_bomb(head[0], head[1]);
+                        set_new_classname_at_free_tile("bomb", head); //TODO add x amount of margin into direction of travel (i.e don't spawn bomb x tiles in front of snake)
                     }
             }
 
             let got_apple = false;
             if (document.getElementById(coordinates_to_global_index(head[0], head[1])).classList.contains("apple")) {
-                remove_old_apple_at(head[0], head[1]);
-                set_new_apple();
-                //set_new_apple();
-
+                remove_classname_at("apple", head[0], head[1]);
+                set_new_classname_at_free_tile("apple")
                 
                 got_apple = true;
             }
@@ -278,21 +284,14 @@ const set_snake_at_index = (index) => {
     document.getElementById(index.toString()).classList.add("snake")
 }
 
-const set_new_apple = () => {
-    let tile = find_free_tile();
+const set_new_classname_at_free_tile = (classname, ...disallowed_positions) => {
+    let tile = find_free_tile(disallowed_positions);
     if (tile) {
-        tile.classList.add("apple");
+        tile.classList.add(classname);
     }
 }
 
-const set_new_bomb = (not_at_x, not_at_y) => {
-    let tile = find_free_tile(not_at_x, not_at_y);
-    if (tile) {
-        tile.classList.add("bomb");
-    }
-}
-
-const find_free_tile = (not_at_x = -1, not_at_y = -1) => {
+const find_free_tile = (...disallowed_positions) => {
     let tile;
     let x;
     let y;
@@ -303,7 +302,9 @@ const find_free_tile = (not_at_x = -1, not_at_y = -1) => {
         x = Math.floor(Math.random() * global.game.width);
         y = Math.floor(Math.random() * global.game.height);
         attempts++;
-        if (x !== not_at_x && y !== not_at_y) {
+        let is_disallowed_position = disallowed_positions.some(([not_at_x, not_at_y]) => x === not_at_x && y === not_at_y);
+        //if (x !== not_at_x && y !== not_at_y) {
+        if (! is_disallowed_position) {
             tile = document.getElementById(coordinates_to_global_index(x, y));
             if (attempts > 20) {
                 tile = document.querySelector(".square:not(.snake):not(.apple):not(.wall):not(.bomb)");
@@ -314,15 +315,9 @@ const find_free_tile = (not_at_x = -1, not_at_y = -1) => {
     return tile;
 }
 
-//TODO merge remove functions into one
-const remove_old_apple_at = (x, y) => {
+const remove_classname_at = (classname, x, y) => {
     let tile = document.getElementById(coordinates_to_global_index(x, y));
-    tile.classList.remove("apple")
-}
-
-const remove_old_bomb_at = (x, y) => {
-    let tile = document.getElementById(coordinates_to_global_index(x, y));
-    tile.classList.remove("bomb")
+    tile.classList.remove(classname)
 }
 
 const reset_at_index = (index) => {
@@ -389,10 +384,6 @@ const tiles_per_second_to_ms = (tiles_per_second) => {
 
 const update_score = (length) => {
     document.getElementById("display_score").innerText = (length).toString();
-}
-
-const delay = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 const close_popup = (event) => {
